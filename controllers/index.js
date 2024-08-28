@@ -1,4 +1,4 @@
-// importar el modelo
+// Importar el modelo
 const Apartment = require('../models/apartment.model.js');
 
 /** Crear un conjunto de funciones que van a dar respuesta a nuestras rutas  */

@@ -2,10 +2,10 @@
 const express = require('express');
 const router = express.Router();
 
-// importamos todos los controladores de controllers/index.js
+// Importamos todos los controladores de controllers/index.js
 const indexControllers = require('../controllers/index.js');
 
-// Router funciona igual que el "app" para crear los endpoints. Nos permite definir un conjunto arbitrario de rutas
+// Endpoint que nos muestra la Home
 router.get('/', indexControllers.getApartments);
 
 

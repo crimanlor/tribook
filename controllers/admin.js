@@ -1,10 +1,10 @@
-// importar el modelo
+// Importar el modelo
 const Apartment = require('../models/apartment.model.js');
 
-const getNewApartmentForm = (req, res) => {
+const getNewApartmentForm = async (req, res) => {
 
     // Obtener todos los apartmentos de la base de datos
-    const apartments = Apartment.find();
+    const apartments = await Apartment.find();
 
     res.render('new-apartment.ejs')
 }

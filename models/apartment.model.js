@@ -18,7 +18,7 @@ const apartmentSchema = new Schema({
     mainPhoto: {
         type: String,
         required: true,
-        // : ['^https?:\/\/[^\s\/$.?#].[^\s]*\.(jpg|jpeg|png|gif|bmp|tiff|svg)$', 'URL not valid']
+        match: [ /^(https):\/\/[^\s/$.?#].[^\s]*$/i, 'Por favor ingrese una URL válida']
     },
     services: {
         // array de strings 
@@ -36,5 +36,5 @@ const apartmentSchema = new Schema({
 
 const Apartment = model('Apartment', apartmentSchema);
 
-// Exporta un único recurso
+// Exportamos un único recurso
 module.exports = Apartment;

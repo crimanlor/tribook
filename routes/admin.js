@@ -4,14 +4,13 @@
 const express = require('express');
 const router = express.Router();
 
-// importar todos los controladores de controllers/admin.js
-
-// Crear primer endpoint de administrador que es el que nos permite mostrar un formulario para añadir un nuevo apartamento
+// Importar todos los controladores de controllers/admin.js
 const adminControllers = require('../controllers/admin.js');
 
+// Endpoint de admin que nos permite mostrar la vista de form para añadir un nuevo apartamento
 router.get('/apartment/new-apartment', adminControllers.getNewApartmentForm);
 
-// 2º paso para poder añadir apartamento después de crear el form.
+// Endpoint de admin para poder añadir apartamento desde la vista del form
 router.post('/apartment/new-apartment', adminControllers.postNewApartmentForm)
 
 module.exports = router;
