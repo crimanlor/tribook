@@ -1,0 +1,61 @@
+/* Estilos generales para la grid */
+.grid {
+    display: grid;
+    /* Define el tamaño de las columnas del grid:
+    - repeat() - para aplicarlo en todas las columnas
+    - minmax(250px, 1fr) - mínimo y máximo de cada columna;
+    - 1fr - las columnas pueden expandirse para llenar el espacio restante disponible, distribuyéndose de manera equitativa
+    - gap: espacio entre las filas y columnas del grid. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+    gap: 20px;
+    margin: 20px;
+}
+
+
+/* Estilos de la card */
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    
+}
+
+.card h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Contenedor de imagen */
+.image-container {
+    overflow: hidden; /*cualquier contenido que se extienda más allá de los límites del elemento será recortado y no será visible. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    width: 300px; 
+    height: 350px;
+    object-fit: cover; /* Imagen ocupa el area disponible sin distorsionarse */
+    display: block; /* Es tratada como un elemento de bloque */
+    margin: 0 auto; /* Para centrar la imagen en la card */
+}
+
+.color-box {
+    padding: 10px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .submit.btn {
+        width: 100%; /* Ajustar el ancho al 100% del contenedor padre */
+        max-width: 300px; /* Definir un máximo para que no se expanda demasiado en pantallas grandes */
+    }
+}

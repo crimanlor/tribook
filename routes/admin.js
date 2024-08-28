@@ -11,4 +11,7 @@ const adminControllers = require('../controllers/admin.js');
 
 router.get('/apartment/new-apartment', adminControllers.getNewApartmentForm);
 
+// 2º paso para poder añadir apartamento después de crear el form.
+router.post('/apartment/new-apartment', adminControllers.postNewApartmentForm)
+
 module.exports = router;
