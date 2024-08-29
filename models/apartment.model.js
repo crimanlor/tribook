@@ -6,6 +6,10 @@ const apartmentSchema = new Schema({
         type: String,
         required: true,
     },
+    description: {
+        type: String,
+        required: true
+    },
     price: {
         type: Number,
         required: true
@@ -21,15 +25,12 @@ const apartmentSchema = new Schema({
         match: [ /^(https):\/\/[^\s/$.?#].[^\s]*$/i, 'Por favor ingrese una URL válida']
     },
     services: {
-        // array de strings 
-        // ["wifi", "air aconditionar"]
-        // objeto con los servicios { wifi: true, airConditioner: false}
-        wifi: Boolean,
-        airConditioner: Boolean,
-        kitchen: Boolean,
-        disability: Boolean,
-        heater: Boolean,
-        tv: Boolean
+        wifi: { type: Boolean, default: false },
+        airConditioner: {type: Boolean, default: false }
+        // kitchen: { type: Boolean, default: false },
+        // disability: { type: Boolean, default: false },
+        // heater: { type: Boolean, default: false },
+        // tv: { type: Boolean, default: false },
     }
 
 });

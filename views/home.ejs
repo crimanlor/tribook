@@ -14,16 +14,17 @@
     <main class="container apartments">
         <section class="grid">
             <%for ( const apartment of apartments) { %>
-                <article class="card apartment">
-                    <h1>
-                        <%= apartment.title %>
-                    </h1>
-                    <img src="<%= apartment.mainPhoto %>" alt="<%= apartment.title %>">
-                    <p>
-                        <%= apartment.price %> por noche
-                    </p>
-                    </footer>
-                </article>
+                <a href="/apartment/<%= apartment._id %>">
+                    <article class="card apartment">
+                        <h1>
+                            <%= apartment.title %>
+                        </h1>
+                        <img src="<%= apartment.mainPhoto %>" alt="<%= apartment.title %>">
+                        <p>
+                            <%= apartment.price %> € por noche
+                        </p>
+                    </article>
+                </a>
             <% } %>
         </section>
     </main>

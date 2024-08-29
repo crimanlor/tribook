@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribook</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+<body>
+    <h1>Detail Apartment Page</h1>
+    <main class="container apartments">
+        <h1><%= selectedApartment.title %></h1>
+        <img src="<%= selectedApartment.mainPhoto %>" alt="<%= selectedApartment.title %>">
+        <p><b>Precio:</b> <%= selectedApartment.price %> € por noche</p>
+        <p><b>Descripción:</b> <%= selectedApartment.description %></p>
+        <p><b>Metros de superficie:</b> <%= selectedApartment.size %> m<sup>2</sup></p>
+        <div>
+            <h3>Servicios</h3>
+            <ul class="services-list" >
+                <%for ( const service of availableServicesNames) { %>
+                    <li style="list-style: none;"><%= service %></li>
+                <% } %>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

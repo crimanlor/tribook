@@ -8,6 +8,8 @@ const indexControllers = require('../controllers/index.js');
 // Endpoint que nos muestra la Home
 router.get('/', indexControllers.getApartments);
 
+// Ruta dinámica para el detalle del apartamento
+router.get('/apartment/:idApartment', indexControllers.getApartmentById)
 
 // Tenemos que exportar estas rutas para que sean usadas en app.js
 module.exports = router;

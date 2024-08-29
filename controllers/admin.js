@@ -3,20 +3,23 @@ const Apartment = require('../models/apartment.model.js');
 
 const getNewApartmentForm = async (req, res) => {
 
-    // Obtener todos los apartmentos de la base de datos
-    const apartments = await Apartment.find();
-
     res.render('new-apartment.ejs')
 }
 
 // 3º paso para poder añadir apartamento después de crear el form y tras crear el endpoint en admin.js routes.
 const postNewApartmentForm = async (req, res) => {
-    
+    const { title, description, price, size, mainPhoto, services } = req.body
+
     await Apartment.create({
-        title: req.body.title,
-        price: req.body.price,
-        size: req.body.size,
-        mainPhoto: req.body.mainPhoto
+        title,
+        description,
+        price,
+        size,
+        mainPhoto,
+        services: {
+            wifi: req.body.wifi == "true",
+            airConditioner: req.body.airConditioner === 'true'
+        }
     })
     res.send('Apartamento creado')
     
