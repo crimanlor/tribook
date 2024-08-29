@@ -8,10 +8,11 @@ const getNewApartmentForm = async (req, res) => {
 
 // 3º paso para poder añadir apartamento después de crear el form y tras crear el endpoint en admin.js routes.
 const postNewApartmentForm = async (req, res) => {
-    const { title, description, price, size, mainPhoto } = req.body
+    const { title, location, description, price, size, mainPhoto } = req.body
 
     await Apartment.create({
         title,
+        location,
         description,
         price,
         size,

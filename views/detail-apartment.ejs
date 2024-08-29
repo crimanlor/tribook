@@ -13,6 +13,7 @@
         <h1><%= selectedApartment.title %></h1>
         <img class="image-detail" src="<%= selectedApartment.mainPhoto %>" alt="<%= selectedApartment.title %>">
         <p><b>Precio:</b> <del style="color: #999999"><%= selectedApartment.price %></del> <%= selectedApartment.price*0.9 %> € por noche</p>
+        <p><b>Ubicación:</b> <%= selectedApartment.location %></p>
         <p><b>Descripción:</b> <%= selectedApartment.description %></p>
         <p><b>Metros de superficie:</b> <%= selectedApartment.size %> m<sup>2</sup></p>
         <div>

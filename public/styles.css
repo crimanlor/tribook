@@ -32,6 +32,10 @@
     margin-bottom: 10px;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Contenedor de imagen */
 .image-container {
     overflow: hidden; /*cualquier contenido que se extienda más allá de los límites del elemento será recortado y no será visible. */

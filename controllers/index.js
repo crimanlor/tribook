@@ -36,8 +36,25 @@ const getApartmentById = async (req, res) => {
 }
 
 const getApartmentsByMaxPrice = async (req, res) => {
-    const maxPrice = req.query['max-price'];
-    const apartments = await Apartment.find({price: { $lte: maxPrice}})
+    const { maxPrice, location }  = req.query
+
+    const query = {};
+
+    if(maxPrice){
+        query.price = { $lte: Number(maxPrice)}
+    }
+
+    if(location){
+        query.location = location
+    }
+
+    // Opción para construir la consulta condicionalmente de manera más compacta pero no la entiendo bien
+    // const query = {
+    //     ...(maxPrice && { price: { $lte: Number(maxPrice) } }),
+    //     ...(location && { location })
+    // };
+
+    const apartments = await Apartment.find(query);
 
     res.render('home', {
         apartments

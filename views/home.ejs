@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tribook</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css" >
     <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
     <h1>Home Page</h1>
     <header>
+        <h3 class="pico-color-azure-500">Opciones de filtrado</h3>
         <form action="/search" method="GET">
+            <label for="location">Ciudad - Población</label>
+            <input type="text" name="location" id="location" required maxlength="30">
             <label for="max-price">Precio máximo por noche</label>
             <input type="number" name="max-price" id="max-price" required min="0">
             <input type="submit" value="Filtrar">
@@ -27,6 +31,9 @@
                             <%= apartment.title %>
                         </h1>
                         <img class="image-card-home" src="<%= apartment.mainPhoto %>" alt="<%= apartment.title %>">
+                        <p>
+                            <b><%= apartment.location %></b>
+                        </p>
                         <p>
                             <%= apartment.price %> € por noche
                         </p>
