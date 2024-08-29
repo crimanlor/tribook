@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tribook</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
                         <h1>
                             <%= apartment.title %>
                         </h1>
-                        <img src="<%= apartment.mainPhoto %>" alt="<%= apartment.title %>">
+                        <img class="image-card-home" src="<%= apartment.mainPhoto %>" alt="<%= apartment.title %>">
                         <p>
                             <%= apartment.price %> € por noche
                         </p>
