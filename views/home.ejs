@@ -11,6 +11,13 @@
 
 <body>
     <h1>Home Page</h1>
+    <header>
+        <form action="/search" method="GET">
+            <label for="max-price">Precio máximo por noche</label>
+            <input type="number" name="max-price" id="max-price" required min="0">
+            <input type="submit" value="Filtrar">
+        </form>
+    </header>
     <main class="container apartments">
         <section class="grid">
             <%for ( const apartment of apartments) { %>

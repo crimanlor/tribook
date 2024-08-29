@@ -35,7 +35,17 @@ const getApartmentById = async (req, res) => {
     })
 }
 
+const getApartmentsByMaxPrice = async (req, res) => {
+    const maxPrice = req.query['max-price'];
+    const apartments = await Apartment.find({price: { $lte: maxPrice}})
+
+    res.render('home', {
+        apartments
+    });
+}
+
 module.exports = {
     getApartments,
-    getApartmentById
+    getApartmentById,
+    getApartmentsByMaxPrice
 }
