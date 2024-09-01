@@ -19,6 +19,14 @@
             <input type="text" name="location" id="location" required maxlength="30">
             <label for="max-price">Precio máximo por noche</label>
             <input type="number" name="max-price" id="max-price" required min="0">
+            <label for="capacity">Capacidad</label>
+            <select name="capacity" id="capacity">
+                <option value="one-person" name="one-person-capacity">1 persona</option>
+                <option value="two-persons" name="two-persons-capacity">2 personas</option>
+                <option value="three-persons" name="three-persons-capacity">3 personas</option>
+                <option value="four-persons" name="four-persons-capacity">4 personas</option>
+            </select>
+    
             <input type="submit" value="Filtrar">
         </form>
     </header>

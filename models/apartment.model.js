@@ -28,6 +28,10 @@ const apartmentSchema = new Schema({
         required: true,
         match: [ /^(https):\/\/[^\s/$.?#].[^\s]*$/i, 'Por favor ingrese una URL válida']
     },
+    capacity: {
+        type: String,
+        enum: ["one-person", "two-persons", "three-persons", "four-persons"]
+    },
     services: {
         wifi: { type: Boolean, default: false },
         airConditioner: {type: Boolean, default: false }

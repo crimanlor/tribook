@@ -36,7 +36,7 @@ const getApartmentById = async (req, res) => {
 }
 
 const getApartmentsByMaxPrice = async (req, res) => {
-    const { maxPrice, location }  = req.query
+    const { maxPrice, location, capacity }  = req.query
 
     const query = {};
 
@@ -46,6 +46,10 @@ const getApartmentsByMaxPrice = async (req, res) => {
 
     if(location){
         query.location = location
+    }
+
+    if(capacity){
+        query.capacity = capacity
     }
 
     // Opción para construir la consulta condicionalmente de manera más compacta pero no la entiendo bien

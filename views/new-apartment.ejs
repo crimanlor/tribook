@@ -15,7 +15,7 @@
         <label for="title">Título</label>
         <input type="text" name="title" id="title" required maxlength="30">
         <label for="location">Ciudad - Población</label>
-            <input type="text" name="location" id="location" required maxlength="30">
+        <input type="text" name="location" id="location" required maxlength="30">
         <label for="description">Descripción</label>
         <textarea rows="5" name="description" id="description" required></textarea>
         <label for="price">Precio por noche</label>
@@ -24,6 +24,13 @@
         <input type="number" name="size" id="size" required min="0">
         <label for="mainPhoto">Foto principal</label>
         <input type="url" name="mainPhoto" id="mainPhoto">
+        <label for="capacity">Capacidad</label>
+        <select name="capacity" id="capacity">
+            <option value="one-person" name="one-person-capacity">1 persona</option>
+            <option value="two-persons" name="two-persons-capacity">2 personas</option>
+            <option value="three-persons" name="three-persons-capacity">3 personas</option>
+            <option value="four-persons" name="four-persons-capacity">4 personas</option>
+        </select>
         <fieldset class="services-container">
             <legend>Servicios</legend>
             <div>
