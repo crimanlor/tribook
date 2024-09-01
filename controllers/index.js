@@ -36,7 +36,7 @@ const getApartmentById = async (req, res) => {
 }
 
 const getApartmentsByMaxPrice = async (req, res) => {
-    const { maxPrice, location, capacity }  = req.query
+    const { maxPrice, location, capacity, startDate, endDate }  = req.query
 
     const query = {};
 
@@ -52,10 +52,41 @@ const getApartmentsByMaxPrice = async (req, res) => {
         query.capacity = capacity
     }
 
+    if(startDate && endDate){
+        const start = new Date(startDate).toISOString();
+        console.log("Esta es la fecha de inicio de búsqueda" + start)
+        const end = new Date(endDate).toISOString();
+        console.log("Esta es la fecha de inicio de búsqueda" + end)
+
+        // Hay que excluir apartamentos que tienen una reserva que se solape el rango de fechas (start y end) proporcionado por el usuario.
+        query.reservations = {
+            // Si elemMatch encuentra una reserva que se solape, not hará que el apartamento no sea incluido en los resultados.
+            $not: {
+                $elemMatch: {
+                    // Reservas cuya startDate (fecha de inicio) sea anterior a la fecha de fin (end) proporcionada.
+                    startDate: { $lt: end },
+                    // Reservas cuya endtDate (fecha de finalización) sea posterior a la fecha de inicio (start) proporcionada.
+                    endDate: { $gt: start }
+                }
+            }
+        };
+    }
+
     // Opción para construir la consulta condicionalmente de manera más compacta pero no la entiendo bien
     // const query = {
     //     ...(maxPrice && { price: { $lte: Number(maxPrice) } }),
-    //     ...(location && { location })
+    // ...(location && { location }),
+    // ...(capacity && { capacity }),
+    // ...(startDate && endDate && {
+    //     reservations: {
+    //         $not: {
+    //             $elemMatch: {
+    //                 startDate: { $lt: new Date(endDate) },
+    //                 endDate: { $gt: new Date(startDate) }
+    //             }
+    //         }
+    //     }
+    // })
     // };
 
     const apartments = await Apartment.find(query);

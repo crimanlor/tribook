@@ -32,6 +32,19 @@ const apartmentSchema = new Schema({
         type: String,
         enum: ["one-person", "two-persons", "three-persons", "four-persons"]
     },
+    reservations: {
+        startDate: { type: Date },
+        endDate: {
+            type: Date
+            // required: true,
+            // validate: {
+            //     validator: function(value) {
+            //         return this.startDate < value;
+            //     },
+            //     message: 'La fecha de finalización de la reserva debe ser posterior a la fecha de inicio de la reserva'
+            // }
+        }
+    },
     services: {
         wifi: { type: Boolean, default: false },
         airConditioner: {type: Boolean, default: false }
@@ -40,7 +53,6 @@ const apartmentSchema = new Schema({
         // heater: { type: Boolean, default: false },
         // tv: { type: Boolean, default: false },
     }
-
 });
 
 const Apartment = model('Apartment', apartmentSchema);
