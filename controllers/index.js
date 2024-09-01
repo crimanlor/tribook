@@ -54,9 +54,7 @@ const getApartmentsByMaxPrice = async (req, res) => {
 
     if(startDate && endDate){
         const start = new Date(startDate).toISOString();
-        console.log("Esta es la fecha de inicio de búsqueda" + start)
         const end = new Date(endDate).toISOString();
-        console.log("Esta es la fecha de inicio de búsqueda" + end)
 
         // Hay que excluir apartamentos que tienen una reserva que se solape el rango de fechas (start y end) proporcionado por el usuario.
         query.reservations = {
