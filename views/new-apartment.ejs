@@ -9,45 +9,45 @@
 </head>
 
 <body>
-    <!-- 1er Paso para añadir apartamento una vez creado el modelo, y las rutas get de admin y user al home -->
-    <h1>Add New Apartment</h1>
+    <h1><%= apartment._id? 'Edit' : 'Add New' %> Apartment</h1>
     <form class="container" action="/admin/apartment/new-apartment" method="POST">
+        <input type="hidden" name="id" id="id" value="<%= apartment._id %>">
         <label for="title">Título</label>
-        <input type="text" name="title" id="title" required maxlength="30">
+        <input type="text" name="title" id="title" required maxlength="30" value="<%= apartment.title %>">
         <label for="location">Ciudad - Población</label>
-        <input type="text" name="location" id="location" required maxlength="30">
+        <input type="text" name="location" id="location" required maxlength="30" value="<%= apartment.location %>">
         <label for="description">Descripción</label>
-        <textarea rows="5" name="description" id="description" required></textarea>
+        <textarea rows="5" name="description" id="description" required><%= apartment.description %></textarea>
         <label for="price">Precio por noche</label>
-        <input type="number" name="price" id="price" required min="0">
+        <input type="number" name="price" id="price" required min="0" value="<%= apartment.price %>">
         <label for="size">M <sup>2</sup></label>
-        <input type="number" name="size" id="size" required min="0">
+        <input type="number" name="size" id="size" required min="0" value="<%= apartment.size %>">
         <label for="mainPhoto">Foto principal</label>
-        <input type="url" name="mainPhoto" id="mainPhoto">
+        <input type="url" name="mainPhoto" id="mainPhoto" value="<%= apartment.mainPhoto %>">
         <label for="capacity">Capacidad</label>
         <select name="capacity" id="capacity">
-            <option value="one-person" name="one-person-capacity">1 persona</option>
-            <option value="two-persons" name="two-persons-capacity">2 personas</option>
-            <option value="three-persons" name="three-persons-capacity">3 personas</option>
-            <option value="four-persons" name="four-persons-capacity">4 personas</option>
+            <option value="one-person" name="one-person-capacity" <%= apartment.capacity == "one-person" ? 'selected' : '' %>>1 persona</option>
+            <option value="two-persons" name="two-persons-capacity" <%= apartment.capacity == "two-persons" ? 'selected' : '' %>>2 personas</option>
+            <option value="three-persons" name="three-persons-capacity" <%= apartment.capacity == "three-persons" ? 'selected' : '' %>>3 personas</option>
+            <option value="four-persons" name="four-persons-capacity" <%= apartment.capacity == "four-persons" ? 'selected' : '' %>>4 personas</option>
         </select>
         <fieldset class="services-container">
             <legend>Servicios</legend>
             <div>
                 <label>
-                    <input type="checkbox" name="wifi" value="true">
+                    <input type="checkbox" name="wifi" value="true"  <%= apartment.services && apartment.services.wifi ? 'checked' : '' %>>
                     Wi-Fi gratuito
                 </label>
             </div>
             <div>
                 <label>
-                    <input type="checkbox" name="airConditioner" value="true">
+                    <input type="checkbox" name="airConditioner" value="true"  <%= apartment.services && apartment.services.airConditioner ? 'checked' : '' %>>
                     Aire acondicionado
                 </label>
             </div>
         </fieldset>
         
-        <input type="submit" value="Añadir">
+        <input type="submit" value="<%= apartment._id ? 'Guardar cambios' : 'Añadir apartamento' %>">
     </form>
 </body>
 
