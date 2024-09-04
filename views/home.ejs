@@ -12,6 +12,13 @@
 
 <body>
     <h1>Home Page</h1>
+    <p> <a href="/admin/apartment/new-apartment">Añadir nuevo apartamento</a>
+    </p>
+    <% if (isAdmin) { %>
+        <p><a class="button-logout" href="/logout">Logout</a></p>
+    <% } else { %>
+        <p><a class="button-logout" href="/login">Login</a></p>
+    <% } %>
     <header>
         <h3 class="pico-color-azure-500">Opciones de filtrado</h3>
         <form action="/search" method="GET">
@@ -53,6 +60,8 @@
                     </article>
                 </a>
             <% } %>
+            <footer>Es administrador? <%= isAdmin %>
+            </footer>
         </section>
     </main>
 </body>
