@@ -11,6 +11,23 @@
     margin: 20px;
 }
 
+.alert {
+    padding: 20px;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.alert.success {
+    background-color: #04AA6D;
+}
+
+.alert.error {
+    background-color: red;
+}
+
 
 /* Estilos de la card */
 .card {

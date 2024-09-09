@@ -30,7 +30,7 @@
         <% if (isAdmin) { %>
             <a href="/admin/apartment/<%= selectedApartment._id %>/edit/">Editar apartamento</a>
         <% } else { %>
-            <p>Mostrar botón de reservar con sus campos de fecha de inicio...fecha de fin, etc.</p>
+            <p><a href="/apartment/<%= selectedApartment._id %>/new-booking">Reservar apartamento</a></p>
         <% } %>
     </footer>
 </body>

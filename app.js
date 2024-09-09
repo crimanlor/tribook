@@ -2,6 +2,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+
+// middelware para gestionar aplicaciones de express
 const session = require('express-session');
 
 const dotenv = require('dotenv');
@@ -22,22 +24,6 @@ const app = express();
 // Tenemos que usar un nuevo middleware para indicar a Express que queremos procesar peticiones de tipo POST
 app.use(express.urlencoded({ extended: true }));
 
-// Configuramos la sesión
-app.use(session({
-    secret: 'miSecretoSuperSecreto',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false } // secure: true en producción con HTTPS
-}));
-
-app.use((req, res, next) => {
-    // La variable req.locals es una variable "global" de tipo objecto a la que todas las vistas pueden acceder
-    // Si el usuario esta autentificado entonces es que es de tipo administrador
-    res.locals.isAdmin = req.session.isAuthenticated;
-    // tenemos que ejecutar next() para que la petición HTTP siga su curso
-    next();
-})
-
 // Añadimos el middleware necesario para que el client puedo hacer peticiones GET a los recursos públicos de la carpeta 'public'
 app.use(express.static('public'));
 
@@ -49,7 +35,28 @@ app.set('view engine', 'ejs');
 // Usamos el middleware morgan para loguear las peticiones del cliente
 app.use(morgan('tiny'));
 
-// Middleware para proteger las rutas del administrador
+// Configuramos la sesión
+app.use(session({
+    // Cadena de texto para firmar la cookie de sesión
+    secret: 'miSecretoSuperSecreto',
+    // Opción que indica que la sesión solo se guardará de nuevo si ha sido modificada para no enviar datos innecesarios
+    resave: false,
+    // Guarda sesiones nuevas (aunque estén vacías). En producción, podemos cambiarlo a false para optimizar el almacenamiento
+    saveUninitialized: true,
+    // La cookie se puede enviar a través de conexiones no seguras.
+    cookie: { secure: false } // secure: true en producción con HTTPS
+}));
+
+app.use((req, res, next) => {
+    // La variable req.locals es un objeto que permite almacenar variables globales solo disponibles durante el ciclo de vida de la solicitud actual.
+    // En este caso almacena la variable global isAdmin
+    // Si el usuario esta autentificado entonces es que es de tipo administrador
+    res.locals.isAdmin = req.session.isAuthenticated;
+    // tenemos que ejecutar next() para que la petición HTTP siga su curso
+    next();
+})
+
+// Protegemos las rutas del administrador
 app.use('/admin', (req, res, next) => {
     // ¿El usuario está autentificado?
     if(req.session.isAuthenticated){

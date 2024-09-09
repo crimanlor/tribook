@@ -57,7 +57,7 @@ const getApartmentsByMaxPrice = async (req, res) => {
         const end = new Date(endDate).toISOString();
 
         // Hay que excluir apartamentos que tienen una reserva que se solape el rango de fechas (start y end) proporcionado por el usuario.
-        query.reservations = {
+        query.bookings = {
             // Si elemMatch encuentra una reserva que se solape, not hará que el apartamento no sea incluido en los resultados.
             $not: {
                 $elemMatch: {
@@ -76,7 +76,7 @@ const getApartmentsByMaxPrice = async (req, res) => {
     // ...(location && { location }),
     // ...(capacity && { capacity }),
     // ...(startDate && endDate && {
-    //     reservations: {
+    //     bookings: {
     //         $not: {
     //             $elemMatch: {
     //                 startDate: { $lt: new Date(endDate) },
@@ -94,8 +94,48 @@ const getApartmentsByMaxPrice = async (req, res) => {
     });
 }
 
+const getBookingForm = async (req, res) => {
+    const { idApartment } = req.params;
+    const apartment = await Apartment.findById(idApartment);
+    res.render('new-booking', {
+        apartment
+    })
+}
+
+const postBookingForm = async (req, res) => {
+    const { idApartment, startDate, endDate } = req.body;
+    const apartment = await Apartment.findById(idApartment);
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const isBooked = apartment.bookings.some(booking => {
+        return (start < booking.endDate && end > booking.startDate);
+    });
+
+    if (isBooked) {
+        return res.render('new-booking', {
+            apartment,
+            isBooked: true, // Reservado
+        });
+    }
+
+    const newBooking = { 
+        startDate: start,
+        endDate: end
+    }
+
+    apartment.bookings.push(newBooking)
+    await apartment.save();
+    res.render('new-booking', {
+        apartment,
+        isBooked: false, // No reservado
+    });
+
+}
+
 module.exports = {
     getApartments,
     getApartmentById,
-    getApartmentsByMaxPrice
+    getApartmentsByMaxPrice,
+    getBookingForm,
+    postBookingForm
 }

@@ -14,5 +14,11 @@ router.get('/apartment/:idApartment', indexControllers.getApartmentById)
 // Ruta para filtrar apartamentos por precio máximo/noche
 router.get('/search', indexControllers.getApartmentsByMaxPrice)
 
+// Ruta para mostrar formulario de nueva reserva
+router.get('/apartment/:idApartment/new-booking', indexControllers. getBookingForm)
+
+// Ruta para enviar datos formulario de nueva reserva
+router.post('/apartment/new-booking', indexControllers.postBookingForm)
+
 // Tenemos que exportar estas rutas para que sean usadas en app.js
 module.exports = router;
