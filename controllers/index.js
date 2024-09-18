@@ -112,6 +112,7 @@ const postBookingForm = async (req, res) => {
     });
 
     if (isBooked) {
+        req.flash('error_msg', `El apartamento no está disponible para las fechas indicadas.`);
         return res.render('new-booking', {
             apartment,
             isBooked: true, // Reservado
@@ -125,6 +126,7 @@ const postBookingForm = async (req, res) => {
 
     apartment.bookings.push(newBooking)
     await apartment.save();
+    req.flash('success_msg', `La reserva ha sido realizada correctamente.`);
     res.render('new-booking', {
         apartment,
         isBooked: false, // No reservado

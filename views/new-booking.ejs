@@ -22,13 +22,6 @@
         </div>
         <input class="w3-btn w3-teal" type="submit" value="Añadir reserva">
     </form>
-    <% if (typeof isBooked !== 'undefined') { %> 
-        <% if (!isBooked) { %>
-            <div id="message" class="container alert success">La reserva se ha realizado correctamente</div>
-        <% } else { %> 
-            <div id="message" class="container alert error">La reserva no puede realizarse en las fechas indicadas</div>
-        <% } %> 
-    <% } %>
     <script>
         // Get today's date
         const today = new Date();
