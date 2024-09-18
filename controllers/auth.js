@@ -20,9 +20,11 @@ const postLoginForm = (req, res) => {
     if(username === USERNAME && password === PASSWORD){
         req.session.isAuthenticated = true;
         res.locals.isAdmin = true;
-        res.redirect('/');
+        req.flash('success_msg', `Sesión iniciada correctamente para el usuario ${username}`);
+        return res.redirect('/');
     } else {
-        res.send('Usuario o contraseña incorrectos')
+        req.flash('error_msg', `Hubo un problema iniciar la sesión. Por favor, inténtalo de nuevo.`);
+        return res.redirect('/');
     }
 }
 
@@ -30,9 +32,9 @@ const logout = (req, res) => {
     console.log('Logout');
     req.session.destroy(err => {
         if (err){
-            res.send('Error al cerrar la sesión')
+            req.flash('error_msg', `Hubo un problema cerrar la sesión. Por favor, inténtalo de nuevo.`);
         }
-        res.redirect('/')
+        return res.redirect('/')
     })
 }
 

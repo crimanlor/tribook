@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tribook</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <link rel="stylesheet" href="/styles.css">
+    <meta charset="UTF-8">
+    <%- include('./partials/head.ejs') %>
 </head>
 <body>
+    <header class="container-fluid"></header>
+        <%- include('./partials/header.ejs') %>
+    </header>
     <h1>Detail Apartment Page</h1>
     <main class="container apartments">
         <h1><%= selectedApartment.title %></h1>

@@ -6,6 +6,9 @@ const mongoose = require('mongoose');
 // middelware para gestionar aplicaciones de express
 const session = require('express-session');
 
+// módulo de terceros para los mensajes del sistema
+const flash = require('connect-flash')
+
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -47,11 +50,16 @@ app.use(session({
     cookie: { secure: false } // secure: true en producción con HTTPS
 }));
 
+// Configuración de flash
+app.use(flash());
+
 app.use((req, res, next) => {
     // La variable req.locals es un objeto que permite almacenar variables globales solo disponibles durante el ciclo de vida de la solicitud actual.
     // En este caso almacena la variable global isAdmin
     // Si el usuario esta autentificado entonces es que es de tipo administrador
     res.locals.isAdmin = req.session.isAuthenticated;
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
     // tenemos que ejecutar next() para que la petición HTTP siga su curso
     next();
 })

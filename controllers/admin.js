@@ -37,13 +37,14 @@ const postNewApartmentForm = async (req, res) => {
     // Editar apartamento
     if (id){
         await Apartment.findByIdAndUpdate(id, apartment);
-        res.send('Apartamento ACTUALIZADO correctamente')
-        return;
+        req.flash('success_msg', `El apartamento ha sido actualizado correctamente por el administrador`)
+        res.redirect('/');
     }
 
     // Crear nuevo apartamento
     await Apartment.create(apartment)
-    res.send('Apartamento creado')
+    req.flash('success_msg', `El apartamento ha sido creado correctamente por el administrador`);
+    res.redirect('/');
     
 }
 

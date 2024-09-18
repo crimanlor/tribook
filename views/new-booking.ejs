@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tribook</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-        <link rel="stylesheet" href="/styles.css">
+        <%- include('./partials/head.ejs') %>
     </head>
   </head>
   <body>
+    <header class="container-fluid"></header>
+        <%- include('./partials/header.ejs') %>
+    </header>
     <h1>Añadir reserva de <strong><%= apartment.title %></strong></h1>
     <form class="w3-container" action="/apartment/new-booking" method="POST">
         <input type="hidden" name="idApartment" value="<%= apartment._id %>">

@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
+    <title>New-Apartment</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <%- include('./partials/head.ejs') %>
 </head>
 
 <body>
+    <header class="container-fluid"></header>
+        <%- include('./partials/header.ejs') %>
+    </header>
     <h1><%= apartment._id? 'Edit' : 'Add New' %> Apartment</h1>
     <form class="container" action="/admin/apartment/new-apartment" method="POST">
         <input type="hidden" name="id" id="id" value="<%= apartment._id %>">
