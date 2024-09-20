@@ -18,21 +18,43 @@ const getNewApartmentForm = async (req, res) => {
 }
 
 const postNewApartmentForm = async (req, res) => {
-    const { id, title, location, description, price, size, mainPhoto, capacity } = req.body
+    const { id, title, location, description, rules, rooms, beds, bathrooms, price, size, mainPhoto,descriptionPhoto1, photo2, descriptionPhoto2, photo3, descriptionPhoto3, photo4, descriptionPhoto4, capacity } = req.body
+
+    const photos = [
+        { url: mainPhoto, description: descriptionPhoto1 || "" },
+        { url: photo2, description: descriptionPhoto2 || "" },
+        { url: photo3, description: descriptionPhoto3 || "" },
+        { url: photo4, description: descriptionPhoto4 || "" }
+    ].filter(photo => photo.url); 
+
+    if (photos.length > 4) {
+        req.flash('error_msg', 'Solo se pueden añadir un máximo de cuatro fotografías adicionales.');
+        return res.redirect('back');
+    }
 
     const apartment = {
         title,
         location,
         description,
+        rules,
+        rooms,
+        beds,
+        bathrooms,
         price,
         size,
+        photos,
         mainPhoto,
         capacity,
         services: {
             wifi: req.body.wifi === 'true',
-            airConditioner: req.body.airConditioner === 'true'
+            airConditioner: req.body.airConditioner === 'true',
+            heater: req.body.heater === 'true',
+            accesibility: req.body.accesibility === 'true',
+            tv: req.body.tv === 'true',
+            kitchen: req.body.kitchen === 'true',
         }
     }
+
 
     // Editar apartamento
     if (id){

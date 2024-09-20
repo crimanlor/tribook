@@ -19,7 +19,11 @@ const getApartmentById = async (req, res) => {
 
     const serviceNames = {
         wifi: "Wi-Fi",
-        airConditioner: "Aire acondicionado"
+        airConditioner: "Aire acondicionado",
+        heater: "Calefacción",
+        accesibility: "Accesible para personas con movilidad reducida",
+        tv: "Televisión",
+        kitchen: "Cocina"
     }
 
     // Object.keys función de JS que nos devuelve un array con las claves de un objeto: de selectedApartment.services devolverá ["wifi", "airConditioner"...]

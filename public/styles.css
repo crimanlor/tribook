@@ -53,6 +53,7 @@ a {
     text-decoration: none;
 }
 
+
 /* Contenedor de imagen */
 .image-container {
     overflow: hidden; /*cualquier contenido que se extienda más allá de los límites del elemento será recortado y no será visible. */
@@ -81,6 +82,8 @@ a {
     padding: 10px;
     color: white;
 }
+
+
 
 @media (max-width: 768px) {
     .submit.btn {

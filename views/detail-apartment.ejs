@@ -16,6 +16,10 @@
         <p><b>Precio:</b> <del style="color: #999999"><%= selectedApartment.price %></del> <%= selectedApartment.price*0.9 %> € por noche</p>
         <p><b>Ubicación:</b> <%= selectedApartment.location %></p>
         <p><b>Descripción:</b> <%= selectedApartment.description %></p>
+        <p><b>Normas:</b> <%= selectedApartment.rules %></p>
+        <p><b>Habitaciones:</b> <%= selectedApartment.rooms %></p>
+        <p><b>Camas:</b> <%= selectedApartment.beds %></p>
+        <p><b>Baños:</b> <%= selectedApartment.bathrooms %></p>
         <p><b>Metros de superficie:</b> <%= selectedApartment.size %> m<sup>2</sup></p>
         <div>
             <h3>Servicios</h3>
@@ -25,7 +29,34 @@
                 <% } %>
             </ul>
         </div>
+        <% if (selectedApartment && selectedApartment.photos && selectedApartment.photos.length > 0) { %>
+            <div class="container apartments">
+                <h3>Fotografías del apartamento</h3>
+                <section class="grid">
+                    <% selectedApartment.photos.forEach(function (photo) { %> <!-- Recorre el array de fotos -->
+                        <% if (photo.url && photo.url !== selectedApartment.mainPhoto) { %> <!-- Verifica si la URL de la foto existe -->
+                            <article class="card photo">
+                                <div class="image-container">
+                                    <img class="image-card-home" src="<%= photo.url %>"
+                                        alt="<%= photo.description || 'Imagen de la propiedad' %>">
+                                </div>
+                                <!-- Muestra la imagen utilizando el campo 'url' -->
+                                <% if (photo.description) { %>
+                                <p>
+                                    <%= photo.description %> <!-- Muestra la descripción de la foto -->
+                                </p>
+                                <% } %>
+                            </article>
+                        <% } %> <!-- Si 'url' no existe, no se renderizará el img -->
+                    <% }) %>
+                </section>
+            </div>
+        <% } else { %>
+            <p>No hay fotografías disponibles para este apartamento.</p>
+        <% } %>
+        
     </main>
+
     <footer>
         Soy administrador? <%= isAdmin %>
         <% if (isAdmin) { %>
@@ -34,5 +65,6 @@
             <p><a href="/apartment/<%= selectedApartment._id %>/new-booking">Reservar apartamento</a></p>
         <% } %>
     </footer>
+    <script></script>
 </body>
 </html>

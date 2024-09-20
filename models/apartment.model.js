@@ -14,6 +14,22 @@ const apartmentSchema = new Schema({
         type: String,
         required: true
     },
+    rules: {
+        type: String,
+        required: true
+    },
+    rooms: {
+        type: Number,
+        required: true
+    },
+    beds: {
+        type: Number,
+        required: true
+    },
+    bathrooms: {
+        type: Number,
+        required: true
+    },
     price: {
         type: Number,
         required: true
@@ -22,6 +38,25 @@ const apartmentSchema = new Schema({
         type: Number,
         required: true,
         min: 0
+    },
+    photos: {
+        type: [{
+            url: {
+                type: String, 
+                required: true,
+            },
+            description: {
+                type: String,
+                maxlength: 50,
+                default: ""
+            }
+        }],
+        validate: {
+            validator: function(photos) {
+                return photos.length <= 4;
+            },
+            message: 'Solo se pueden añadir un máximo de cuatro fotografías adicionales'
+        }
     },
     mainPhoto: {
         type: String,
@@ -40,11 +75,11 @@ const apartmentSchema = new Schema({
     ],
     services: {
         wifi: { type: Boolean, default: false },
-        airConditioner: {type: Boolean, default: false }
-        // kitchen: { type: Boolean, default: false },
-        // disability: { type: Boolean, default: false },
-        // heater: { type: Boolean, default: false },
-        // tv: { type: Boolean, default: false },
+        airConditioner: {type: Boolean, default: false },
+        heater: { type: Boolean, default: false },
+        accesibility: { type: Boolean, default: false },
+        tv: { type: Boolean, default: false },
+        kitchen: { type: Boolean, default: false }
     }
 });
 
