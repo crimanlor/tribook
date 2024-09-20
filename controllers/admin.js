@@ -18,17 +18,17 @@ const getNewApartmentForm = async (req, res) => {
 }
 
 const postNewApartmentForm = async (req, res) => {
-    const { id, title, location, description, rules, rooms, beds, bathrooms, price, size, mainPhoto,descriptionPhoto1, photo2, descriptionPhoto2, photo3, descriptionPhoto3, photo4, descriptionPhoto4, capacity } = req.body
+    const { id, title, location, description, rules, rooms, beds, bathrooms, price, size, mainPhoto, descriptionPhoto1, photo2, descriptionPhoto2, photo3, descriptionPhoto3, photo4, descriptionPhoto4, capacity } = req.body
 
     const photos = [
-        { url: mainPhoto, description: descriptionPhoto1 || "" },
-        { url: photo2, description: descriptionPhoto2 || "" },
-        { url: photo3, description: descriptionPhoto3 || "" },
-        { url: photo4, description: descriptionPhoto4 || "" }
+        { url: mainPhoto, descriptionPhoto: descriptionPhoto1 || "" },
+        { url: photo2, descriptionPhoto: descriptionPhoto2 || "" },
+        { url: photo3, descriptionPhoto: descriptionPhoto3 || "" },
+        { url: photo4, descriptionPhoto: descriptionPhoto4 || "" }
     ].filter(photo => photo.url); 
 
     if (photos.length > 4) {
-        req.flash('error_msg', 'Solo se pueden añadir un máximo de cuatro fotografías adicionales.');
+        req.flash('error_msg', 'Solo se pueden añadir un máximo de cuatro fotografías.');
         return res.redirect('back');
     }
 

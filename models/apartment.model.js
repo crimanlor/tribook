@@ -45,7 +45,7 @@ const apartmentSchema = new Schema({
                 type: String, 
                 required: true,
             },
-            description: {
+            descriptionPhoto: {
                 type: String,
                 maxlength: 50,
                 default: ""

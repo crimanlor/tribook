@@ -38,12 +38,12 @@
                             <article class="card photo">
                                 <div class="image-container">
                                     <img class="image-card-home" src="<%= photo.url %>"
-                                        alt="<%= photo.description || 'Imagen de la propiedad' %>">
+                                        alt="<%= photo.descriptionPhoto || 'Imagen de la propiedad' %>">
                                 </div>
                                 <!-- Muestra la imagen utilizando el campo 'url' -->
-                                <% if (photo.description) { %>
+                                <% if (photo.descriptionPhoto) { %>
                                 <p>
-                                    <%= photo.description %> <!-- Muestra la descripción de la foto -->
+                                    <%= photo.descriptionPhoto %> <!-- Muestra la descripción de la foto -->
                                 </p>
                                 <% } %>
                             </article>
