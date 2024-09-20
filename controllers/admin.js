@@ -10,6 +10,10 @@ const getNewApartmentForm = async (req, res) => {
         if (!apartment.services) {
             apartment.services = {}; // Asegura que services siempre sea un objeto
         }
+        if (!apartment.location) {
+            apartment.location = {};
+        }
+       
     }
 
     res.render('new-apartment', {
@@ -18,7 +22,7 @@ const getNewApartmentForm = async (req, res) => {
 }
 
 const postNewApartmentForm = async (req, res) => {
-    const { id, title, location, description, rules, rooms, beds, bathrooms, price, size, mainPhoto, descriptionPhoto1, photo2, descriptionPhoto2, photo3, descriptionPhoto3, photo4, descriptionPhoto4, capacity } = req.body
+    const { id, title, city, province, description, rules, rooms, beds, bathrooms, price, size, mainPhoto, descriptionPhoto1, photo2, descriptionPhoto2, photo3, descriptionPhoto3, photo4, descriptionPhoto4, capacity } = req.body
 
     const photos = [
         { url: mainPhoto, descriptionPhoto: descriptionPhoto1 || "" },
@@ -32,9 +36,18 @@ const postNewApartmentForm = async (req, res) => {
         return res.redirect('back');
     }
 
+    const coordinates = {
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
+    }
+
     const apartment = {
         title,
-        location,
+        location: {
+            city,
+            province,
+            coordinates
+        },
         description,
         rules,
         rooms,

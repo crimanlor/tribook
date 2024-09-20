@@ -16,10 +16,25 @@
         <input type="hidden" name="id" id="id" value="<%= apartment._id %>">
         <label for="title">Título</label>
         <input type="text" name="title" id="title" required maxlength="30" value="<%= apartment.title %>">
-        <label for="location">Ciudad - Población</label>
-        <input type="text" name="location" id="location" required maxlength="30" value="<%= apartment.location %>">
         <label for="description">Descripción</label>
         <textarea rows="5" name="description" id="description" required><%= apartment.description %></textarea>
+        <fieldset class="container">
+            <h4>Ubicación</h4>
+            <div class="grid">
+                <div>
+                    <label for="city">Ciudad - Población</label>
+                    <input type="text" name="city" id="city" required maxlength="30" value="<%= apartment.location && apartment.location.city ? apartment.location.city : '' %>">
+                    <label for="province">Provincia</label>
+                    <input type="text" name="province" id="province" required maxlength="30" value="<%= apartment.location && apartment.location.province ? apartment.location.province : '' %>">
+                </div>
+                <div>
+                    <label for="latitude">Latitud</label>
+                    <input type="number" step="any" name="latitude" id="latitude"  min="0" value="<%= apartment.location && apartment.location.latitude ? apartment.location.latitude : '' %>">
+                    <label for="longitude">Longitud</label>
+                    <input type="number" step="any" name="longitude" id="longitude"  min="0" value="<%= apartment.location && apartment.location.longitude ? apartment.location.longitude : '' %>">
+                </div>
+            </div>
+        </fieldset>
         <label for="rules">Normas</label>
         <textarea rows="5" name="rules" id="rules" required><%= apartment.rules %></textarea>
         <label for="rooms">Habitaciones</label>
@@ -40,7 +55,7 @@
             <option value="four-persons" name="four-persons-capacity" <%= apartment.capacity == "four-persons" ? 'selected' : '' %>>4 personas</option>
         </select>
         <fieldset class="services-container">
-            <legend>Servicios</legend>
+            <h4>Servicios</h4>
             <div>
                 <label>
                     <input type="checkbox" name="wifi" value="true"  <%= apartment.services && apartment.services.wifi ? 'checked' : '' %>>
