@@ -39,7 +39,7 @@ const getApartmentById = async (req, res) => {
     })
 }
 
-const getApartmentsByMaxPrice = async (req, res) => {
+const searchApartments = async (req, res) => {
     const { maxPrice, city, capacity, startDate, endDate }  = req.query
 
     const query = {};
@@ -141,7 +141,7 @@ const postBookingForm = async (req, res) => {
 module.exports = {
     getApartments,
     getApartmentById,
-    getApartmentsByMaxPrice,
+    searchApartments,
     getBookingForm,
     postBookingForm
 }

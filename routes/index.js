@@ -12,7 +12,7 @@ router.get('/', indexControllers.getApartments);
 router.get('/apartment/:idApartment', indexControllers.getApartmentById)
 
 // Ruta para filtrar apartamentos por precio máximo/noche
-router.get('/search', indexControllers.getApartmentsByMaxPrice)
+router.get('/search', indexControllers.searchApartments)
 
 // Ruta para mostrar formulario de nueva reserva
 router.get('/apartment/:idApartment/new-booking', indexControllers. getBookingForm)
