@@ -40,7 +40,7 @@ const getApartmentById = async (req, res) => {
 }
 
 const getApartmentsByMaxPrice = async (req, res) => {
-    const { maxPrice, location, capacity, startDate, endDate }  = req.query
+    const { maxPrice, city, capacity, startDate, endDate }  = req.query
 
     const query = {};
 
@@ -48,8 +48,8 @@ const getApartmentsByMaxPrice = async (req, res) => {
         query.price = { $lte: Number(maxPrice)}
     }
 
-    if(location){
-        query.location = location
+    if(city){
+        query['location.city'] = city;
     }
 
     if(capacity){
