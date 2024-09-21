@@ -93,6 +93,11 @@ const apartmentSchema = new Schema({
         accesibility: { type: Boolean, default: false },
         tv: { type: Boolean, default: false },
         kitchen: { type: Boolean, default: false }
+    },
+    isAvailable: {
+        type: Boolean,
+        required: true,
+        default: true
     }
 });
 

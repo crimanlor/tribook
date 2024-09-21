@@ -14,6 +14,13 @@
     <h1><%= apartment._id? 'Edit' : 'Add New' %> Apartment</h1>
     <form class="container" action="/admin/apartment/new-apartment" method="POST">
         <input type="hidden" name="id" id="id" value="<%= apartment._id %>">
+        <div>
+            <label>
+                <input type="checkbox" name="isAvailable" id="isAvailable" value="true"  <%= typeof apartment.isAvailable === 'undefined' || apartment.isAvailable ? 'checked' : '' %>>
+                Apartamento disponible
+            </label>
+            <p class="advisement pico-color-azure-500">Si desmarcas la casilla, el apartamento no estará disponible, no podrá visualizarse en la página principal para reservar ni podrá ser editado, pero puedes reactivartivarlo en el momento que lo desees contactando previamente con soporte.</p>
+        </div>
         <label for="title">Título</label>
         <input type="text" name="title" id="title" required maxlength="30" value="<%= apartment.title %>">
         <label for="description">Descripción</label>

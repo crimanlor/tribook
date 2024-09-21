@@ -39,7 +39,9 @@ const postNewApartmentForm = async (req, res) => {
     const coordinates = {
         latitude: req.body.latitude,
         longitude: req.body.longitude
-    }
+    }  
+
+    const isAvailable = req.body.isAvailable === 'true';
 
     const apartment = {
         title,
@@ -65,7 +67,8 @@ const postNewApartmentForm = async (req, res) => {
             accesibility: req.body.accesibility === 'true',
             tv: req.body.tv === 'true',
             kitchen: req.body.kitchen === 'true',
-        }
+        },
+        isAvailable
     }
 
 
@@ -73,13 +76,13 @@ const postNewApartmentForm = async (req, res) => {
     if (id){
         await Apartment.findByIdAndUpdate(id, apartment);
         req.flash('success_msg', `El apartamento ha sido actualizado correctamente por el administrador`)
-        res.redirect('/');
+        return res.redirect('/');
     }
 
     // Crear nuevo apartamento
     await Apartment.create(apartment)
     req.flash('success_msg', `El apartamento ha sido creado correctamente por el administrador`);
-    res.redirect('/');
+    return res.redirect('/');
     
 }
 

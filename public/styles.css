@@ -83,6 +83,10 @@ a {
     color: white;
 }
 
+.advisement{
+    font-size: 11px;
+}
+
 
 
 @media (max-width: 768px) {
