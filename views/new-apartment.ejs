@@ -29,9 +29,9 @@
                 </div>
                 <div>
                     <label for="latitude">Latitud</label>
-                    <input type="number" step="any" name="latitude" id="latitude"  min="0" value="<%= apartment.location && apartment.location.latitude ? apartment.location.latitude : '' %>">
+                    <input type="number" step="any" name="latitude" id="latitude"  min="0" value="<%= apartment.location && apartment.location.coordinates.latitude ? apartment.location.coordinates.latitude : '' %>">
                     <label for="longitude">Longitud</label>
-                    <input type="number" step="any" name="longitude" id="longitude"  min="0" value="<%= apartment.location && apartment.location.longitude ? apartment.location.longitude : '' %>">
+                    <input type="number" step="any" name="longitude" id="longitude"  min="0" value="<%= apartment.location && apartment.location.coordinates.longitude ? apartment.location.coordinates.longitude : '' %>">
                 </div>
             </div>
         </fieldset>
@@ -110,30 +110,31 @@
                 <label class="label" for="photo2">URL</label>
                 <input type="url" name="photo2" id="photo2"
                 required
-                value='<%= apartment.photo2 %>'>
+                value="<%= apartment && apartment.photos && apartment.photos[1] && apartment.photos[1].url ? apartment.photos[1].url : '' %>">
                 <label for="descriptionPhoto2">Descripción</label>
                 <input type="text" name="descriptionPhoto2" id="descriptionPhoto2" maxlength="50"
-                value='<%= apartment && apartment.photos && apartment.photos[1] && apartment.photos[1].photo ? apartment.photos[1].photo : '' %>'>
+                value="<%= apartment && apartment.photos && apartment.photos[1] && apartment.photos[1].descriptionPhoto ? apartment.photos[1].descriptionPhoto : '' %>">
+                
             </div>
             <div>
                 <legend class="pico-color-azure-500">Tercera fotografía</legend>
                 <label class="label" for="photo3">URL</label>
                 <input type="url" name="photo3" id="photo3"
                 required
-                value='<%= apartment.photo3 %>'>
+                value="<%= apartment && apartment.photos && apartment.photos[2] && apartment.photos[2].url ? apartment.photos[2].url : '' %>">
                 <label for="descriptionPhoto3">Descripción</label>
                 <input type="text" name="descriptionPhoto3" id="descriptionPhoto3" maxlength="50"
-                value='<%= apartment && apartment.photos && apartment.photos[2] && apartment.photos[2].photo ? apartment.photos[2].photo : '' %>'>
+                value="<%= apartment && apartment.photos && apartment.photos[2] && apartment.photos[2].descriptionPhoto ? apartment.photos[2].descriptionPhoto : '' %>">
             </div>
             <div>
                 <legend class="pico-color-azure-500">Cuarta fotografía</legend>
                 <label class="label" for="photo4">URL</label>
                 <input type="url" name="photo4" id="photo4"
                 required
-                value='<%= apartment.photo4 %>'>
+                value="<%= apartment && apartment.photos && apartment.photos[3] && apartment.photos[3].url ? apartment.photos[3].url : '' %>">
                 <label for="descriptionPhoto4">Descripción</label>
                 <input type="text" name="descriptionPhoto4" id="descriptionPhoto4" maxlength="50"
-                value='<%= apartment && apartment.photos && apartment.photos[3] && apartment.photos[3].photo ? apartment.photos[3].photo : '' %>'>
+                value="<%= apartment && apartment.photos && apartment.photos[3] && apartment.photos[3].descriptionPhoto ? apartment.photos[3].descriptionPhoto : '' %>">
             </div>
         </fieldset>
         

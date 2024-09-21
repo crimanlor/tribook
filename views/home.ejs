@@ -15,7 +15,7 @@
         <h3 class="pico-color-azure-500">Opciones de filtrado</h3>
         <form action="/search" method="GET">
             <label for="location">Ciudad - Población</label>
-            <input type="text" name="location" id="location" required maxlength="30">
+            <input type="text" name="city" id="city" required maxlength="30">
             <label for="max-price">Precio máximo por noche</label>
             <input type="number" name="max-price" id="max-price" required min="0">
             <label for="capacity">Capacidad</label>
@@ -44,7 +44,7 @@
                         </h1>
                         <img class="image-card-home" src="<%= apartment.mainPhoto %>" alt="<%= apartment.title %>">
                         <p>
-                            <b><%= apartment.location %></b>
+                            <b><%= apartment.location.city %></b>
                         </p>
                         <p>
                             <%= apartment.price %> € por noche
