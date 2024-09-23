@@ -18,8 +18,11 @@ const indexRoutes = require('./routes/index.js');
 // importar las rutas de administrador
 const adminRoutes = require('./routes/admin.js');
 
-// rutas de autentificación
+// importar rutas de autentificación
 const authRoutes = require('./routes/auth.js')
+
+// importar rutas de la api
+const apiRoutes = require('./routes/api.js')
 
 // creamos una instancia del servidor Express
 const app = express();
@@ -81,6 +84,9 @@ app.use('/admin', (req, res, next) => {
 app.use('/', indexRoutes);
 // Todas las rutas de administrador prefijadas con '/admin'
 app.use('/admin', adminRoutes);
+// Todas las rutas de la api prefijadas con '/api'
+app.use('/api', apiRoutes)
+
 app.use(authRoutes);
 
 async function connectDB() {

@@ -20,6 +20,7 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
+    "express-validator": "^7.2.0",
     "mongoose": "^8.5.4",
     "morgan": "^1.10.0"
   }
