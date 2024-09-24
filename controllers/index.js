@@ -18,13 +18,13 @@ const getApartmentById = async (req, res) => {
     const selectedApartment = await Apartment.findById(idApartment)
 
     const serviceNames = {
-        wifi: "Wi-Fi",
-        airConditioner: "Aire acondicionado",
-        heater: "Calefacción",
-        accesibility: "Accesible para personas con movilidad reducida",
-        tv: "Televisión",
-        kitchen: "Cocina"
-    }
+        wifi: { name: "WiFi", icon: 'fa fa-fw fa-wifi' },
+        airConditioner: { name: "Aire acondicionado", icon: 'fa fa-fw fa-snowflake-o' },
+        heater: { name: "Calefacción", icon: 'fa fa-fw fa-thermometer-half' },
+        accesibility: { name: "Accesible", icon: 'fa fa-fw fa-wheelchair' },
+        tv: { name: "Televisión", icon: 'fa fa-fw fa-tv' },
+        kitchen: { name: "Cocina", icon: 'fa fa-fw fa-cutlery' }
+    };
 
     // Object.keys función de JS que nos devuelve un array con las claves de un objeto: de selectedApartment.services devolverá ["wifi", "airConditioner"...]
     // .filter, filtramos cada service que sea true, es decir, que exista

@@ -45,7 +45,7 @@
             </div>
     </form>
     <main class="container apartments">
-        <section class="grid">
+        <section class="grid" style="justify-content: center;">
             <%for ( const apartment of apartments) { %>
                 <a href="/apartment/<%= apartment._id %>">
                     <article class="card apartment">
@@ -76,26 +76,6 @@
             <i class="fa fa-linkedin w3-hover-opacity"></i>
           </div>
         </footer>
-        
-        <!-- <script>
-        // Tabs
-        function openLink(evt, linkName) {
-          var i, x, tablinks;
-          x = document.getElementsByClassName("myLink");
-          for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablink");
-          for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-          }
-          document.getElementById(linkName).style.display = "block";
-          evt.currentTarget.className += " w3-red";
-        }
-        
-        // Click on the first tablink on load
-        document.getElementsByClassName("tablink")[0].click();
-        </script> -->
 </body>
 
 </html>

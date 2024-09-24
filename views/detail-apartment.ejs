@@ -5,66 +5,145 @@
     <meta charset="UTF-8">
     <%- include('./partials/head.ejs') %>
 </head>
+<style>
+    .mySlides {display: none}
+</style>
 <body>
     <header class="container-fluid"></header>
         <%- include('./partials/header.ejs') %>
-    </header>
-    <h1>Detail Apartment Page</h1>
+    </header>  
     <main class="container apartments">
         <h1><%= selectedApartment.title %></h1>
-        <img class="image-detail" src="<%= selectedApartment.mainPhoto %>" alt="<%= selectedApartment.title %>">
-        <p><b>Precio:</b> <del style="color: #999999"><%= selectedApartment.price %></del> <%= selectedApartment.price*0.9 %> € por noche</p>
-        <p><b>Ubicación:</b> <%= selectedApartment.location %></p>
-        <p><b>Descripción:</b> <%= selectedApartment.description %></p>
-        <p><b>Normas:</b> <%= selectedApartment.rules %></p>
-        <p><b>Habitaciones:</b> <%= selectedApartment.rooms %></p>
-        <p><b>Camas:</b> <%= selectedApartment.beds %></p>
-        <p><b>Baños:</b> <%= selectedApartment.bathrooms %></p>
-        <p><b>Metros de superficie:</b> <%= selectedApartment.size %> m<sup>2</sup></p>
-        <div>
-            <h3>Servicios</h3>
-            <ul class="services-list" >
-                <%for ( const service of availableServicesNames) { %>
-                    <li style="list-style: none;"><%= service %></li>
-                <% } %>
-            </ul>
-        </div>
+        <!-- Slideshow Header -->
+    <div class="w3-container" id="apartment">
+        <!-- Include other photos in the slider -->
         <% if (selectedApartment && selectedApartment.photos && selectedApartment.photos.length > 0) { %>
-            <div class="container apartments">
-                <h3>Fotografías del apartamento</h3>
-                <section class="grid">
-                    <% selectedApartment.photos.forEach(function (photo) { %> <!-- Recorre el array de fotos -->
-                        <% if (photo.url && photo.url !== selectedApartment.mainPhoto) { %> <!-- Verifica si la URL de la foto existe -->
-                            <article class="card photo">
-                                <div class="image-container">
-                                    <img class="image-card-home" src="<%= photo.url %>"
-                                        alt="<%= photo.descriptionPhoto || 'Imagen de la propiedad' %>">
-                                </div>
-                                <!-- Muestra la imagen utilizando el campo 'url' -->
-                                <% if (photo.descriptionPhoto) { %>
+            <% selectedApartment.photos.forEach(function(photo, index) { %>
+                <% if (photo.url) { %>
+                    <div class="w3-display-container mySlides">
+                        <img src="<%= photo.url %>" style="width:100%;margin-bottom:-6px">
+                        <div class="w3-display-bottomleft w3-container w3-black" style="padding-top: 10px;">
+                            <% if (photo.descriptionPhoto) { %>
                                 <p>
                                     <%= photo.descriptionPhoto %> <!-- Muestra la descripción de la foto -->
                                 </p>
-                                <% } %>
-                            </article>
-                        <% } %> <!-- Si 'url' no existe, no se renderizará el img -->
-                    <% }) %>
-                </section>
-            </div>
+                            <% } else { %>
+                                <p>Fotografía <%= index + 1 %></p>
+                            <% } %>
+                        </div>
+                    </div>
+                <% } %>
+            <% }); %>
         <% } else { %>
             <p>No hay fotografías disponibles para este apartamento.</p>
         <% } %>
+    </div>
+
+    <!-- Thumbnails -->
+    <div class="w3-row-padding w3-section">
+        <% if (selectedApartment && selectedApartment.photos && selectedApartment.photos.length > 0) { %>
+          <% selectedApartment.photos.forEach(function(photo, index) { %> <!-- Iterar sobre cada foto -->
+            <% if (photo.url) { %> <!-- Verifica si la URL de la foto existe -->
+              <div class="w3-col s3">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="<%= photo.url %>" 
+                     style="width:100%;cursor:pointer" 
+                     onclick="currentDiv(<%= index + 1 %>)" title="Thumbnail <%= index + 1 %>">
+              </div>
+            <% } %> 
+          <% }); %>
+        <% } %>
+    </div>
+    <div class="w3-container">
+        <h4><strong>Espacio</strong></h4>
+        <div class="w3-row w3-large">
+          <div class="w3-col s6">
+            <p><i class="fa fa-fw fa-home"></i> Superficie: <%= selectedApartment.size %> m<sup>2</sup></p>
+            <p><i class="fa fa-fw fa-male"></i> Habitaciones: <%= selectedApartment.rooms %></p>
+            <p><i class="fa fa-fw fa-bath"></i> Baños: <%= selectedApartment.bathrooms %></p>
+            <p><i class="fa fa-fw fa-bed"></i> Camas: <%= selectedApartment.beds %></p>
+          </div>
+          <!-- <div class="w3-col s6">
+            <p><i class="fa fa-fw fa-clock-o"></i> Check In: After 3PM</p>
+            <p><i class="fa fa-fw fa-clock-o"></i> Check Out: 12PM</p>
+          </div> -->
+        </div>
+        <hr>
+        <h4><strong>Ubicación</strong></h4>
+        <p><%= selectedApartment.location.city %></p>
+        <hr>
+        <h4><strong>Precio</strong></h4>
+        <p><del style="color: #999999"><%= selectedApartment.price %></del> <%= selectedApartment.price*0.9 %> € por noche</p>
+        <hr>
+        <h4><strong>Descripción</strong></h4>
+        <p><%= selectedApartment.description %></p>
+        <p>Aceptamos: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
+        <hr>
+        <h4><strong>Normas</strong></h4>
+        <p><%= selectedApartment.rules %></p>
+      </div>
+      <hr>
+    
+      <h4><strong>Servicios</strong></h4>
+    <div class="w3-row w3-large" style="padding-bottom: 30px;">
+        <% for (let i = 0; i < availableServicesNames.length; i++) { %>
+            <% if (i % 3 === 0) { %> <!-- Si es el inicio de un nuevo grupo -->
+                <div class="w3-col s6"> <!-- Contenedor para el grupo -->
+            <% } %>
+            
+            <p style="list-style: none;">
+                <i class="<%= availableServicesNames[i].icon %>"></i> <!-- Renderiza el ícono -->
+                <%= availableServicesNames[i].name %> <!-- Renderiza el nombre -->
+            </p>
+    
+            <% if ((i + 1) % 3 === 0 || i === availableServicesNames.length - 1) { %> <!-- Si es el final de un grupo -->
+                </div> <!-- Cierra el contenedor del grupo -->
+            <% } %>
+        <% } %>
+    </div>
+        
         
     </main>
-
-    <footer>
-        Soy administrador? <%= isAdmin %>
+    <footer class="w3-row-padding" style="padding-bottom: 50px;">
         <% if (isAdmin) { %>
-            <a href="/admin/apartment/<%= selectedApartment._id %>/edit/">Editar apartamento</a>
+            <a href="/admin/apartment/<%= selectedApartment._id %>/edit/" style="border-radius: 5px; width: 100%; padding: 15px;" class="w3-btn w3-teal">Editar apartamento</a>
         <% } else { %>
-            <p><a href="/apartment/<%= selectedApartment._id %>/new-booking">Reservar apartamento</a></p>
+            <a href="/apartment/<%= selectedApartment._id %>/new-booking" style="border-radius: 5px; width: 100%; padding: 15px;" class="w3-btn w3-teal">Reservar apartamento</a>
         <% } %>
     </footer>
-    <script></script>
+    <script>
+
+       var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function currentDiv(n) {
+        showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        
+        // Ciclo para asegurarse de que el índice esté dentro del rango
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+
+        // Ocultar todas las imágenes
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+
+        // Quitar la clase "w3-opacity-off" de todos los thumbnails
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+        }
+
+        // Mostrar la imagen actual y aplicar la clase "w3-opacity-off" al thumbnail correspondiente
+        x[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " w3-opacity-off";
+        }
+
+    </script>
+        
 </body>
 </html>
