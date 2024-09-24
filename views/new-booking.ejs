@@ -9,8 +9,9 @@
     <header class="container-fluid"></header>
         <%- include('./partials/header.ejs') %>
     </header>
-    <h1>Añadir reserva de <strong><%= apartment.title %></strong></h1>
-    <form class="w3-container" action="/apartment/new-booking" method="POST">
+    <h1 style="padding: 20px;">Añadir reserva de <strong><%= apartment.title %></strong></h1>
+    <img class="image-detail" src="<%= apartment.mainPhoto %>">
+    <form class="w3-row-padding" style="padding-top: 10px; padding-bottom: 50px;" action="/apartment/new-booking" method="POST">
         <input type="hidden" name="idApartment" value="<%= apartment._id %>">
         <div class="w3-row">
             <label for="startDate">Fecha de inicio: </label>
@@ -21,6 +22,7 @@
             <input type="date" name="endDate" id="endDate">
         </div>
         <input class="w3-btn w3-teal" type="submit" value="Añadir reserva">
+        <a href="/" style="border-radius: 5px; width: 100%; padding: 15px;" class="w3-btn w3-black">Regresar al home</a>
     </form>
     <script>
         // Get today's date
