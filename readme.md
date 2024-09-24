@@ -1,6 +1,6 @@
 # Tribook - Apartment Booking System
 
-The project involves creating a tourist accommodation search and booking application using Node.js and Express. The application allows users to create, delete, modify, or list all apartments in the database.
+The project involves creating a tourist accommodation search and booking application using Node.js and Express. The application lists all apartments in the database and allows admin users to create, delete, and modify apartments, while regular users can view apartment details and make bookings.
 
 ## Features
 
