@@ -1,4 +1,4 @@
-# Tribook - Accommodation Reservation System
+# Tribook - Apartment Booking System
 
 The project involves creating a tourist accommodation search and booking application using Node.js and Express. The application allows users to create, delete, modify, or list all apartments in the database.
 
