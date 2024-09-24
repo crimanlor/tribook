@@ -87,8 +87,6 @@ a {
     font-size: 11px;
 }
 
-
-
 @media (max-width: 768px) {
     .submit.btn {
         width: 100%; /* Ajustar el ancho al 100% del contenedor padre */

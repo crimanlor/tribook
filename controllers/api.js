@@ -1,7 +1,7 @@
 // Importar el modelo
 const Apartment = require('../models/apartment.model.js');
 
-// Importar variable de límite
+// Importar variable de límite y express-validator
 const { MAX_DOCUMENTS } = require('../config/constants.js')
 const { validationResult } = require('express-validator');
 
