@@ -82,6 +82,19 @@ a {
   
 }
 
+.image-detail-apartment {
+    width: 100%; 
+    height:550px;
+    object-fit: cover; /* Imagen ocupa el area disponible sin distorsionarse */
+    display: block; /* Es tratada como un elemento de bloque */
+  
+}
+
+.image-detail-thumbails{
+    width:100%; 
+    height:150px;
+}
+
 .color-box {
     padding: 10px;
     color: white;
@@ -95,5 +108,13 @@ a {
     .submit.btn {
         width: 100%; /* Ajustar el ancho al 100% del contenedor padre */
         max-width: 300px; /* Definir un máximo para que no se expanda demasiado en pantallas grandes */
+    }
+
+    .image-detail-thumbails {
+        width: 100; 
+        height:100px;
+        object-fit: cover; /* Imagen ocupa el area disponible sin distorsionarse */
+        display: block; /* Es tratada como un elemento de bloque */
+      
     }
 }

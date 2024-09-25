@@ -11,6 +11,16 @@ const getApartments = async (req, res) => {
     });
 }
 
+const getAboutUs = async (req, res) => {
+
+    res.render('about-us');
+}
+
+const getContact = async (req, res) => {
+
+    res.render('contact');
+}
+
 const getApartmentById = async (req, res) => {
     // 1. Vamos al modelo para obtener el apartamento por el id
     const { idApartment } = req.params;
@@ -140,6 +150,8 @@ const postBookingForm = async (req, res) => {
 
 module.exports = {
     getApartments,
+    getAboutUs,
+    getContact,
     getApartmentById,
     searchApartments,
     getBookingForm,

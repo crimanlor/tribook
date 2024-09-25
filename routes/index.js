@@ -8,6 +8,13 @@ const indexControllers = require('../controllers/index.js');
 // Endpoint que nos muestra la Home
 router.get('/', indexControllers.getApartments);
 
+// Endpoint que nos muestra la Página Sobre nosotros
+router.get('/about-us', indexControllers.getAboutUs);
+
+// Endpoint que nos muestra la Página de Conctacto
+router.get('/contact', indexControllers.getContact);
+
+
 // Ruta dinámica para el detalle del apartamento
 router.get('/apartment/:idApartment', indexControllers.getApartmentById)
 

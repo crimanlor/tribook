@@ -21,10 +21,10 @@
             <% selectedApartment.photos.forEach(function(photo, index) { %>
                 <% if (photo.url) { %>
                     <div class="w3-display-container mySlides">
-                        <img src="<%= photo.url %>" style="width:100%;margin-bottom:-6px">
+                        <img class="image-detail-apartment" src="<%= photo.url %>" style="width:100%;margin-bottom:-6px">
                         <div class="w3-display-bottomleft w3-container w3-black" style="padding-top: 10px;">
                             <% if (photo.descriptionPhoto) { %>
-                                <p>
+                                <p style="color: white;">
                                     <%= photo.descriptionPhoto %> <!-- Muestra la descripción de la foto -->
                                 </p>
                             <% } else { %>
@@ -44,9 +44,9 @@
         <% if (selectedApartment && selectedApartment.photos && selectedApartment.photos.length > 0) { %>
           <% selectedApartment.photos.forEach(function(photo, index) { %> <!-- Iterar sobre cada foto -->
             <% if (photo.url) { %> <!-- Verifica si la URL de la foto existe -->
-              <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="<%= photo.url %>" 
-                     style="width:100%;cursor:pointer" 
+              <div class="w3-col s3 ">
+                <img class="demo w3-opacity w3-hover-opacity-off image-detail-thumbails" src="<%= photo.url %>" 
+                     style="cursor:pointer" 
                      onclick="currentDiv(<%= index + 1 %>)" title="Thumbnail <%= index + 1 %>">
               </div>
             <% } %> 
