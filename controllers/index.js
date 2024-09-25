@@ -31,7 +31,6 @@ const getApartments = async (req, res) => {
     });
 };
 
-
 const getAboutUs = async (req, res) => {
     res.render('about-us');
 }
@@ -103,8 +102,27 @@ const searchApartments = async (req, res) => {
 
     const apartments = await Apartment.find(query);
 
+    const serviceNames = {
+        wifi: { name: "WiFi", icon: 'fa fa-fw fa-wifi' },
+        airConditioner: { name: "Aire acondicionado", icon: 'fa fa-fw fa-snowflake-o' },
+        heater: { name: "Calefacción", icon: 'fa fa-fw fa-thermometer-half' },
+        accesibility: { name: "Accesible", icon: 'fa fa-fw fa-wheelchair' },
+        tv: { name: "Televisión", icon: 'fa fa-fw fa-tv' },
+        kitchen: { name: "Cocina", icon: 'fa fa-fw fa-cutlery' }
+    };
+
+    const apartmentsWithServices = apartments.map(apartment => {
+        const availableServices = Object.keys(apartment.services).filter(service => apartment.services[service]);
+        const availableServicesNames = availableServices.map(service => serviceNames[service]);
+
+        return {
+            ...apartment.toObject(),  // convertir el documento a objeto para manipularlo
+            availableServicesNames   // añadir los servicios con sus nombres e íconos
+        };
+    });
+
     res.render('home', {
-        apartments
+        apartments: apartmentsWithServices
     });
 }
 

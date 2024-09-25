@@ -56,8 +56,15 @@
                 <h4><strong>Espacio</strong></h4>
                 <div class="w3-row w3-large">
                 <div class="w3-col s6">
+                    <p><i class="fa fa-fw fa-male"></i> Capacidad: 
+                    <%= selectedApartment.capacity === 'one-person' ? '1 persona' :
+                        selectedApartment.capacity === 'two-persons' ? '2 personas' :
+                        selectedApartment.capacity === 'three-persons' ? '3 personas' :
+                        selectedApartment.capacity === 'four-persons' ? '4 personas' : 
+                        'Capacidad no especificada' %>
+                    </p>
                     <p><i class="fa fa-fw fa-home"></i> Superficie: <%= selectedApartment.size %> m<sup>2</sup></p>
-                    <p><i class="fa fa-fw fa-male"></i> Habitaciones: <%= selectedApartment.rooms %></p>
+                    <p><i class="fa fa-fw fa-home"></i> Habitaciones: <%= selectedApartment.rooms %></p>
                     <p><i class="fa fa-fw fa-bath"></i> Baños: <%= selectedApartment.bathrooms %></p>
                     <p><i class="fa fa-fw fa-bed"></i> Camas: <%= selectedApartment.beds %></p>
                 </div>
