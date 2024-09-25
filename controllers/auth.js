@@ -1,5 +1,8 @@
-const USERNAME = "admin";
-const PASSWORD = "admin";
+const dotenv = require('dotenv');
+dotenv.config();
+
+const USERNAME = process.env.DB_USER;
+const PASSWORD = process.env.DB_PASSWORD;
 
 const getLoginForm = (req, res) => {
     res.send(`
