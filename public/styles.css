@@ -32,7 +32,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     border: 1px solid #ccc;
     padding: 10px;
     background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);    
+}
+
+.card.apartment {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    height: 500px;
     
 }
 

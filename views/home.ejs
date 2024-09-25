@@ -44,7 +44,7 @@
         </form>
         <main class="container apartments">
             <section class="grid" style="justify-content: center;">
-                <%for ( const apartment of apartments) { %>
+                <% for (const apartment of apartments) { %>
                     <a href="/apartment/<%= apartment._id %>">
                         <article class="card apartment">
                             <h1>
@@ -54,14 +54,27 @@
                             <p>
                                 <b><%= apartment.location.city %></b>
                             </p>
-                            <p>
+                            <span class="w3-teal">
                                 <%= apartment.price %> € por noche
+                            </span>
+                            <p>
+                                <%= apartment.size %> m<sup>2</sup>
                             </p>
+                            <!-- Mostrar servicios disponibles -->
+                            <div class="services">
+                                <% apartment.availableServicesNames.forEach(service => { %>
+                                    <span title="<%= service.name %>">
+                                        <i class="<%= service.icon %>"></i> <%= service.name %>
+                                    </span>
+                                    <br/>
+                                <% }) %>
+                            </div>
                         </article>
                     </a>
                 <% } %>
             </section>
         </main>
+        
         <!-- Footer -->
         <footer class="w3-container w3-center w3-opacity w3-margin-bottom">
             <h5>Búscanos en redes sociales</h5>
