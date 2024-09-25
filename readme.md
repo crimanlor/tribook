@@ -59,7 +59,6 @@ The project involves creating a tourist accommodation search and booking applica
 
 - Admin functionalities to modify or delete apartments.
 - Search functionality based on guest capacity, price, city, and available dates.
-- Map integration to show the location of the apartment on Google Maps.
 
 ## Installation and Setup
 
@@ -83,7 +82,7 @@ The project involves creating a tourist accommodation search and booking applica
 ## Usage
 
 1. Open your browser and go to `http://localhost:3000`.
-2. Use the menu to navigate between apartment listings and the form to add new apartments.
+2. Use the menu to navigate between apartment listings and view the aparment details.
 3. Administrators can manage apartments while clients can reserve them.
 
 ## Dependencies
@@ -96,37 +95,71 @@ The project involves creating a tourist accommodation search and booking applica
 
 ## Example Usage
 
-Here's an example of how to create a new apartment entry:
+Below is an example of how the apartment data will appear once it's stored in MongoDB:
 
-```javascript
-const newApartment = {
-  title: "Cozy Mountain Retreat",
-  description: "A lovely apartment in the heart of the mountains.",
-  rules: "No pets allowed.",
-  rooms: 2,
-  beds: 3,
-  bathrooms: 1,
-  images: ["url1.jpg", "url2.jpg", "url3.jpg", "url4.jpg"],
-  mainPhoto: "url1.jpg",
-  pricePerNight: 100,
-  maxGuests: 4,
-  squareMeters: 80,
-  services: {
-    wifi: true,
-    airConditioner: true,
-    heater: false,
-    tv: true,
-    kitchen: true,
+```json
+{
+  "_id": "66ed3cc2190d4fb066632cd0",
+  "title": "Penthouse with Sea View",
+  "location": {
+    "city": "Valencia",
+    "province": "Valencia",
+    "coordinates": {
+      "latitude": 39.47,
+      "longitude": 0.38
+    }
   },
-  location: {
-    province: "Barcelona",
-    city: "Sitges",
-    coordinates: {
-      lat: 41.2363,
-      lng: 1.8372,
+  "description": "Enjoy this luxurious penthouse with stunning sea views in the heart of Valencia. Perfect for families or travelers seeking comfort and elegance.",
+  "rules": "No parties or events allowed. Respect the neighbors and no smoking indoors.",
+  "rooms": 3,
+  "beds": 4,
+  "bathrooms": 2,
+  "price": 180,
+  "size": 85,
+  "photos": [
+    {
+      "url": "https://images.pexels.com/photos/2347356/pexels-photo-2347356.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "descriptionPhoto": "Spacious living room with sea view"
     },
+    {
+      "url": "https://images.pexels.com/photos/2347356/pexels-photo-2347356.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "descriptionPhoto": "Master bedroom with king-size bed and balcony access"
+    },
+    {
+      "url": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "descriptionPhoto": "Fully equipped modern kitchen"
+    },
+    {
+      "url": "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "descriptionPhoto": "Bathroom with luxury finishes and sea view"
+    }
+  ],
+  "mainPhoto": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "capacity": "two-persons",
+  "services": {
+    "wifi": true,
+    "airConditioner": true,
+    "heater": true,
+    "accesibility": false,
+    "tv": true,
+    "kitchen": true
   },
-};
+  "bookings": [
+    {
+      "startDate": {
+        "$date": "2024-11-04T00:00:00Z"
+      },
+      "endDate": {
+        "$date": "2024-11-05T00:00:00Z"
+      },
+      "_id": {
+        "$oid": "66df33d8512ae4a990092e6e"
+      }
+    }
+  ],
+  "isAvailable": true,
+  "__v": 0
+}
 ```
 
 ## Deployment
