@@ -44,7 +44,7 @@ app.use(morgan('tiny'));
 // Configuramos la sesión
 app.use(session({
     // Cadena de texto para firmar la cookie de sesión
-    secret: 'miSecretoSuperSecreto',
+    secret: process.env.SESSION_SECRET,
     // Opción que indica que la sesión solo se guardará de nuevo si ha sido modificada para no enviar datos innecesarios
     resave: false,
     // Guarda sesiones nuevas (aunque estén vacías). En producción, podemos cambiarlo a false para optimizar el almacenamiento
