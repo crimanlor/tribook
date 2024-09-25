@@ -167,15 +167,15 @@ Below is an example of how the apartment data will appear once it's stored in Mo
 The application is deployed and can be accessed at the following URL:
 [Tribook](https://)
 
-### Demos
-
-- [Demo Simple: Add Apartment](link-to-demo)
-- [List Apartments](link-to-demo)
-- [Final App with Additional Features](link-to-demo)
-
 ### Admin Credentials
 
-- Username:
-- Password:
+To gain access to administrative features (such as adding, editing, or deleting apartments), please contact me directly. I can provide you with the necessary environment variables for admin access.
+
+### Demos
+
+Feel free to explore the demo versions of the application. You can see how to add, edit, and delete apartments without needing admin access. If you have any questions or need assistance, don’t hesitate to reach out!
+
+- [Demo Admin features: Add, Edit and Delete Apartment](link-to-demo)
+- [Demo Regular User features: View Apartments List, Filter and Made a Booking](link-to-demo)
 
 ---
