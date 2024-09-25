@@ -1,81 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>Tribook</title>
-    <%- include('./partials/head.ejs') %>
-</head>
-
-<body>
-    <header class="container-fluid">
-        <%- include('./partials/header.ejs') %>
-    </header>
-    <section class="w3-display-container w3-content" style="max-width:1500px;">
-        <img class="image-detail" src="https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg" alt="The Hotel" >
-    </section>
-    <form class="w3-row-padding card" style="padding-top: 10px;" action="/search" method="GET">
-        <div class="w3-col m2">
-            <label for="city"><i class="fa fa-map-marker"></i> Ciudad</label>
-            <input class="w3-input w3-border" type="text" placeholder="Ciudad" name="city" id="city" required maxlength="30">
-            </div>
-            <div class="w3-col m2">
-            <label for="startDate"><i class="fa fa-calendar-o"></i> Fecha inicio</label>
-            <input class="w3-input w3-border" type="date" id="startDate" name="startDate" required>
-            </div>
-            <div class="w3-col m2">
-            <label for="endDate"><i class="fa fa-calendar-o"></i> Fecha fin</label>
-            <input class="w3-input w3-border" type="date" id="endDate" name="endDate" required>
-            </div>
-            <div class="w3-col m2">
-            <label for="capacity"><i class="fa fa-male"></i> Personas</label>
-            <select class="w4-input w3-border" name="capacity" id="capacity">
-                <option value="one-person" name="one-person-capacity">1 persona</option>
-                <option value="two-persons" name="two-persons-capacity">2 personas</option>
-                <option value="three-persons" name="three-persons-capacity">3 personas</option>
-                <option value="four-persons" name="four-persons-capacity">4 personas</option>
-            </select>
-            </div>
-            <div class="w3-col m2">
-                <label for="max-price"><i class="fa fa-eur"></i> Precio noche</label>
-                <input class="w3-input w3-border" type="number" placeholder="15€" name="max-price" id="max-price" required min="0">
-            </div>
-            <div class="w3-col m2">
-            <label><i class="fa fa-search"></i> Búsqueda</label>
-            <input class="w3-button w3-block w3-black" type="submit" value="Buscar">
-            </div>
-    </form>
-    <main class="container apartments">
-        <section class="grid" style="justify-content: center;">
-            <%for ( const apartment of apartments) { %>
-                <a href="/apartment/<%= apartment._id %>">
-                    <article class="card apartment">
-                        <h1>
-                            <%= apartment.title %>
-                        </h1>
-                        <img class="image-card-home" src="<%= apartment.mainPhoto %>" alt="<%= apartment.title %>">
-                        <p>
-                            <b><%= apartment.location.city %></b>
-                        </p>
-                        <p>
-                            <%= apartment.price %> € por noche
-                        </p>
-                    </article>
-                </a>
-            <% } %>
+    <head>
+        <title>Tribook</title>
+        <%- include('./partials/head.ejs') %>
+    </head>
+    <body>
+        <header class="container-fluid">
+            <%- include('./partials/header.ejs') %>
+        </header>
+        <section class="w3-display-container w3-content" style="max-width:1500px;">
+            <img class="image-detail" src="https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg" alt="The Hotel" >
         </section>
-    </main>
+        <form class="w3-row-padding card" style="padding-top: 10px;" action="/search" method="GET">
+            <div class="w3-col m2">
+                <label for="city"><i class="fa fa-map-marker"></i> Ciudad</label>
+                <input class="w3-input w3-border" type="text" placeholder="Ciudad" name="city" id="city" required maxlength="30">
+                </div>
+                <div class="w3-col m2">
+                <label for="startDate"><i class="fa fa-calendar-o"></i> Fecha inicio</label>
+                <input class="w3-input w3-border" type="date" id="startDate" name="startDate" required>
+                </div>
+                <div class="w3-col m2">
+                <label for="endDate"><i class="fa fa-calendar-o"></i> Fecha fin</label>
+                <input class="w3-input w3-border" type="date" id="endDate" name="endDate" required>
+                </div>
+                <div class="w3-col m2">
+                <label for="capacity"><i class="fa fa-male"></i> Personas</label>
+                <select class="w4-input w3-border" name="capacity" id="capacity">
+                    <option value="one-person" name="one-person-capacity">1 persona</option>
+                    <option value="two-persons" name="two-persons-capacity">2 personas</option>
+                    <option value="three-persons" name="three-persons-capacity">3 personas</option>
+                    <option value="four-persons" name="four-persons-capacity">4 personas</option>
+                </select>
+                </div>
+                <div class="w3-col m2">
+                    <label for="max-price"><i class="fa fa-eur"></i> Precio noche</label>
+                    <input class="w3-input w3-border" type="number" placeholder="15€" name="max-price" id="max-price" required min="0">
+                </div>
+                <div class="w3-col m2">
+                <label><i class="fa fa-search"></i> Búsqueda</label>
+                <input class="w3-button w3-block w3-black" type="submit" value="Buscar">
+                </div>
+        </form>
+        <main class="container apartments">
+            <section class="grid" style="justify-content: center;">
+                <%for ( const apartment of apartments) { %>
+                    <a href="/apartment/<%= apartment._id %>">
+                        <article class="card apartment">
+                            <h1>
+                                <%= apartment.title %>
+                            </h1>
+                            <img class="image-card-home" src="<%= apartment.mainPhoto %>" alt="<%= apartment.title %>">
+                            <p>
+                                <b><%= apartment.location.city %></b>
+                            </p>
+                            <p>
+                                <%= apartment.price %> € por noche
+                            </p>
+                        </article>
+                    </a>
+                <% } %>
+            </section>
+        </main>
         <!-- Footer -->
         <footer class="w3-container w3-center w3-opacity w3-margin-bottom">
-          <h5>Búscanos en redes sociales</h5>
-          <div class="w3-xlarge w3-padding-16">
+            <h5>Búscanos en redes sociales</h5>
+            <div class="w3-xlarge w3-padding-16">
             <i class="fa fa-facebook-official w3-hover-opacity"></i>
             <i class="fa fa-instagram w3-hover-opacity"></i>
             <i class="fa fa-snapchat w3-hover-opacity"></i>
             <i class="fa fa-pinterest-p w3-hover-opacity"></i>
             <i class="fa fa-twitter w3-hover-opacity"></i>
             <i class="fa fa-linkedin w3-hover-opacity"></i>
-          </div>
+            </div>
         </footer>
-</body>
-
+    </body>
 </html>

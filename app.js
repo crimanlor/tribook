@@ -1,30 +1,30 @@
-// importar módulos de terceros
+// Importamos módulos de terceros
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
-// middelware para gestionar aplicaciones de express
+// Middelware para gestionar aplicaciones de express
 const session = require('express-session');
 
-// módulo de terceros para los mensajes del sistema
+// Módulo de terceros para los mensajes del sistema
 const flash = require('connect-flash')
 
 const dotenv = require('dotenv');
 dotenv.config();
 
-// importar las rutas públicas
+// Importamos las rutas públicas
 const indexRoutes = require('./routes/index.js');
 
-// importar las rutas de administrador
+// Importamos las rutas de administrador
 const adminRoutes = require('./routes/admin.js');
 
-// importar rutas de autentificación
+// Importamos rutas de autentificación
 const authRoutes = require('./routes/auth.js')
 
-// importar rutas de la api
+// Importamos rutas de la api
 const apiRoutes = require('./routes/api.js')
 
-// creamos una instancia del servidor Express
+// Creamos una instancia del servidor Express
 const app = express();
 
 // Tenemos que usar un nuevo middleware para indicar a Express que queremos procesar peticiones de tipo POST

@@ -97,7 +97,6 @@ const getEditApartmentForm = async (req, res) => {
     })
 }
 
-// named exports (expotamos varios recursos, lo hacemos como un objeto)
 module.exports = {
     getNewApartmentForm,
     postNewApartmentForm,

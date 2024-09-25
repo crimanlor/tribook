@@ -5,11 +5,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 /* Estilos generales para la grid */
 .grid {
     display: grid;
-    /* Define el tamaño de las columnas del grid:
-    - repeat() - para aplicarlo en todas las columnas
-    - minmax(250px, 1fr) - mínimo y máximo de cada columna;
-    - 1fr - las columnas pueden expandirse para llenar el espacio restante disponible, distribuyéndose de manera equitativa
-    - gap: espacio entre las filas y columnas del grid. */
     grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
     gap: 20px;
     margin: 20px;
@@ -31,7 +26,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 .alert.error {
     background-color: red;
 }
-
 
 /* Estilos de la card */
 .card {
@@ -57,7 +51,6 @@ a {
     text-decoration: none;
 }
 
-
 /* Contenedor de imagen */
 .image-container {
     overflow: hidden; /*cualquier contenido que se extienda más allá de los límites del elemento será recortado y no será visible. */
@@ -77,16 +70,16 @@ a {
 .image-detail {
     width: 100%; 
     height:450px;
-    object-fit: cover; /* Imagen ocupa el area disponible sin distorsionarse */
-    display: block; /* Es tratada como un elemento de bloque */
+    object-fit: cover;
+    display: block; 
   
 }
 
 .image-detail-apartment {
     width: 100%; 
     height:550px;
-    object-fit: cover; /* Imagen ocupa el area disponible sin distorsionarse */
-    display: block; /* Es tratada como un elemento de bloque */
+    object-fit: cover; 
+    display: block;
   
 }
 

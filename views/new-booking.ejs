@@ -4,41 +4,40 @@
         <title>Tribook</title>
         <%- include('./partials/head.ejs') %>
     </head>
-  </head>
-  <body>
-    <header class="container-fluid"></header>
-        <%- include('./partials/header.ejs') %>
-    </header>
-    <h1 style="padding: 20px;">Añadir reserva de <strong><%= apartment.title %></strong></h1>
-    <img class="image-detail" src="<%= apartment.mainPhoto %>">
-    <form class="w3-row-padding" style="padding-top: 10px; padding-bottom: 50px;" action="/apartment/new-booking" method="POST">
-        <input type="hidden" name="idApartment" value="<%= apartment._id %>">
-        <div class="w3-row">
-            <label for="startDate">Fecha de inicio: </label>
-            <input type="date" name="startDate" id="startDate">
-        </div>
-        <div class="w3-row" style="margin-top: 1rem;">
-            <label for="endDate">Fecha de finalización: </label>
-            <input type="date" name="endDate" id="endDate">
-        </div>
-        <input class="w3-btn w3-teal" type="submit" value="Añadir reserva">
-        <a href="/" style="border-radius: 5px; width: 100%; padding: 15px;" class="w3-btn w3-black">Regresar al home</a>
-    </form>
-    <script>
-        // Get today's date
-        const today = new Date();
+    <body>
+        <header class="container-fluid"></header>
+            <%- include('./partials/header.ejs') %>
+        </header>
+        <h1 style="padding: 20px;">Añadir reserva de <strong><%= apartment.title %></strong></h1>
+        <img class="image-detail" src="<%= apartment.mainPhoto %>">
+        <form class="w3-row-padding" style="padding-top: 10px; padding-bottom: 50px;" action="/apartment/new-booking" method="POST">
+            <input type="hidden" name="idApartment" value="<%= apartment._id %>">
+            <div class="w3-row">
+                <label for="startDate">Fecha de inicio: </label>
+                <input type="date" name="startDate" id="startDate">
+            </div>
+            <div class="w3-row" style="margin-top: 1rem;">
+                <label for="endDate">Fecha de finalización: </label>
+                <input type="date" name="endDate" id="endDate">
+            </div>
+            <input class="w3-btn w3-teal" type="submit" value="Añadir reserva">
+            <a href="/" style="border-radius: 5px; width: 100%; padding: 15px;" class="w3-btn w3-black">Regresar al home</a>
+        </form>
+        <script>
+            // Get today's date
+            const today = new Date();
 
-        // Set start date to today
-        const startDate = today.toISOString().split('T')[0];
-        document.getElementById('startDate').value = startDate;
+            // Set start date to today
+            const startDate = today.toISOString().split('T')[0];
+            document.getElementById('startDate').value = startDate;
 
-        // Calculate date 30 days from today
-        const endDate = new Date();
-        endDate.setDate(today.getDate() + 30);
-        const formattedEndDate = endDate.toISOString().split('T')[0];
+            // Calculate date 30 days from today
+            const endDate = new Date();
+            endDate.setDate(today.getDate() + 30);
+            const formattedEndDate = endDate.toISOString().split('T')[0];
 
-        // Set end date to 30 days later
-        document.getElementById('endDate').value = formattedEndDate;
-    </script>
-  </body>
+            // Set end date to 30 days later
+            document.getElementById('endDate').value = formattedEndDate;
+        </script>
+    </body>
 </html>

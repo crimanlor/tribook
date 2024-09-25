@@ -1,153 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title><%= apartment._id? 'Editar' : 'Añadir Nuevo' %> Apartamento</title>
-    <meta charset="UTF-8">
-    <%- include('./partials/head.ejs') %>
-</head>
-
-<body>
-    <header class="container-fluid"></header>
-        <%- include('./partials/header.ejs') %>
-    </header>
-    <h1 style="padding: 20px;"><%= apartment._id? 'Editar' : 'Añadir Nuevo' %> Apartamento</h1>
-    <form class="container" action="/admin/apartment/new-apartment" method="POST">
-        <input type="hidden" name="id" id="id" value="<%= apartment._id %>">
-        <label for="title">Título</label>
-        <input type="text" name="title" id="title" required maxlength="30" value="<%= apartment.title %>">
-        <label for="description">Descripción</label>
-        <textarea rows="5" name="description" id="description" required><%= apartment.description %></textarea>
-        <div style="padding-top: 20px;">
-            <label>
-                <input type="checkbox" name="isAvailable" id="isAvailable" value="true"  <%= typeof apartment.isAvailable === 'undefined' || apartment.isAvailable ? 'checked' : '' %>>
-                Apartamento disponible
-            </label>
-            <p class="advisement pico-color-azure-500">Si desmarcas esta casilla, el apartamento no estará disponible, no podrá visualizarse en la página principal para reservar ni podrá ser editado, pero puedes reactivartivarlo en el momento que lo desees contactando previamente con soporte.</p>
-        </div>
-        <section class="container" style="padding-top: 10px;">
-            <h4>Ubicación</h4>
-            <div class="grid">
+    <head>
+        <title><%= apartment._id? 'Editar' : 'Añadir Nuevo' %> Apartamento</title>
+        <meta charset="UTF-8">
+        <%- include('./partials/head.ejs') %>
+    </head>
+    <body>
+        <header class="container-fluid"></header>
+            <%- include('./partials/header.ejs') %>
+        </header>
+        <h1 style="padding: 20px;"><%= apartment._id? 'Editar' : 'Añadir Nuevo' %> Apartamento</h1>
+        <form class="container" action="/admin/apartment/new-apartment" method="POST">
+            <input type="hidden" name="id" id="id" value="<%= apartment._id %>">
+            <label for="title">Título</label>
+            <input type="text" name="title" id="title" required maxlength="30" value="<%= apartment.title %>">
+            <label for="description">Descripción</label>
+            <textarea rows="5" name="description" id="description" required><%= apartment.description %></textarea>
+            <div style="padding-top: 20px;">
+                <label>
+                    <input type="checkbox" name="isAvailable" id="isAvailable" value="true"  <%= typeof apartment.isAvailable === 'undefined' || apartment.isAvailable ? 'checked' : '' %>>
+                    Apartamento disponible
+                </label>
+                <p class="advisement pico-color-azure-500">Si desmarcas esta casilla, el apartamento no estará disponible, no podrá visualizarse en la página principal para reservar ni podrá ser editado, pero puedes reactivartivarlo en el momento que lo desees contactando previamente con soporte.</p>
+            </div>
+            <section class="container" style="padding-top: 10px;">
+                <h4>Ubicación</h4>
+                <div class="grid">
+                    <div>
+                        <label for="city">Ciudad - Población</label>
+                        <input type="text" name="city" id="city" required maxlength="30" value="<%= apartment.location && apartment.location.city ? apartment.location.city : '' %>">
+                        <label for="province">Provincia</label>
+                        <input type="text" name="province" id="province" required maxlength="30" value="<%= apartment.location && apartment.location.province ? apartment.location.province : '' %>">
+                    </div>
+                    <div>
+                        <label for="latitude">Latitud</label>
+                        <input type="number" step="any" name="latitude" id="latitude"  min="0" value="<%= apartment.location && apartment.location.coordinates.latitude ? apartment.location.coordinates.latitude : '' %>">
+                        <label for="longitude">Longitud</label>
+                        <input type="number" step="any" name="longitude" id="longitude"  min="0" value="<%= apartment.location && apartment.location.coordinates.longitude ? apartment.location.coordinates.longitude : '' %>">
+                    </div>
+                </div>
+            </section>
+            <label for="rules">Normas</label>
+            <textarea rows="5" name="rules" id="rules" required><%= apartment.rules %></textarea>
+            <label for="rooms" style="padding-top: 20px;">Habitaciones</label>
+            <input type="number" name="rooms" id="rooms" required min="0" value="<%= apartment.rooms %>">
+            <label for="beds">Camas</label>
+            <input type="number" name="beds" id="beds" required min="0" value="<%= apartment.beds %>">
+            <label for="bathrooms">Baños</label>
+            <input type="number" name="bathrooms" id="bathrooms" required min="0" value="<%= apartment.bathrooms %>">
+            <label for="price">Precio por noche</label>
+            <input type="number" name="price" id="price" required min="0" value="<%= apartment.price %>">
+            <label for="size">M <sup>2</sup></label>
+            <input type="number" name="size" id="size" required min="0" value="<%= apartment.size %>">
+            <label for="capacity">Capacidad</label>
+            <select name="capacity" id="capacity">
+                <option value="one-person" name="one-person-capacity" <%= apartment.capacity == "one-person" ? 'selected' : '' %>>1 persona</option>
+                <option value="two-persons" name="two-persons-capacity" <%= apartment.capacity == "two-persons" ? 'selected' : '' %>>2 personas</option>
+                <option value="three-persons" name="three-persons-capacity" <%= apartment.capacity == "three-persons" ? 'selected' : '' %>>3 personas</option>
+                <option value="four-persons" name="four-persons-capacity" <%= apartment.capacity == "four-persons" ? 'selected' : '' %>>4 personas</option>
+            </select>
+            <section class="services-container" style="padding-top: 20px;">
+                <h4>Servicios</h4>
                 <div>
-                    <label for="city">Ciudad - Población</label>
-                    <input type="text" name="city" id="city" required maxlength="30" value="<%= apartment.location && apartment.location.city ? apartment.location.city : '' %>">
-                    <label for="province">Provincia</label>
-                    <input type="text" name="province" id="province" required maxlength="30" value="<%= apartment.location && apartment.location.province ? apartment.location.province : '' %>">
+                    <label>
+                        <input type="checkbox" name="wifi" value="true"  <%= apartment.services && apartment.services.wifi ? 'checked' : '' %>>
+                        Wi-Fi gratuito
+                    </label>
                 </div>
                 <div>
-                    <label for="latitude">Latitud</label>
-                    <input type="number" step="any" name="latitude" id="latitude"  min="0" value="<%= apartment.location && apartment.location.coordinates.latitude ? apartment.location.coordinates.latitude : '' %>">
-                    <label for="longitude">Longitud</label>
-                    <input type="number" step="any" name="longitude" id="longitude"  min="0" value="<%= apartment.location && apartment.location.coordinates.longitude ? apartment.location.coordinates.longitude : '' %>">
+                    <label>
+                        <input type="checkbox" name="airConditioner" value="true"  <%= apartment.services && apartment.services.airConditioner ? 'checked' : '' %>>
+                        Aire acondicionado
+                    </label>
                 </div>
-            </div>
-        </section>
-        <label for="rules">Normas</label>
-        <textarea rows="5" name="rules" id="rules" required><%= apartment.rules %></textarea>
-        <label for="rooms" style="padding-top: 20px;">Habitaciones</label>
-        <input type="number" name="rooms" id="rooms" required min="0" value="<%= apartment.rooms %>">
-        <label for="beds">Camas</label>
-        <input type="number" name="beds" id="beds" required min="0" value="<%= apartment.beds %>">
-        <label for="bathrooms">Baños</label>
-        <input type="number" name="bathrooms" id="bathrooms" required min="0" value="<%= apartment.bathrooms %>">
-        <label for="price">Precio por noche</label>
-        <input type="number" name="price" id="price" required min="0" value="<%= apartment.price %>">
-        <label for="size">M <sup>2</sup></label>
-        <input type="number" name="size" id="size" required min="0" value="<%= apartment.size %>">
-        <label for="capacity">Capacidad</label>
-        <select name="capacity" id="capacity">
-            <option value="one-person" name="one-person-capacity" <%= apartment.capacity == "one-person" ? 'selected' : '' %>>1 persona</option>
-            <option value="two-persons" name="two-persons-capacity" <%= apartment.capacity == "two-persons" ? 'selected' : '' %>>2 personas</option>
-            <option value="three-persons" name="three-persons-capacity" <%= apartment.capacity == "three-persons" ? 'selected' : '' %>>3 personas</option>
-            <option value="four-persons" name="four-persons-capacity" <%= apartment.capacity == "four-persons" ? 'selected' : '' %>>4 personas</option>
-        </select>
-        <section class="services-container" style="padding-top: 20px;">
-            <h4>Servicios</h4>
-            <div>
-                <label>
-                    <input type="checkbox" name="wifi" value="true"  <%= apartment.services && apartment.services.wifi ? 'checked' : '' %>>
-                    Wi-Fi gratuito
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="airConditioner" value="true"  <%= apartment.services && apartment.services.airConditioner ? 'checked' : '' %>>
-                    Aire acondicionado
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="heater" value="true"  <%= apartment.services && apartment.services.heater ? 'checked' : '' %>>
-                    Calefacción
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="accesibility" value="true"  <%= apartment.services && apartment.services.accesibility ? 'checked' : '' %>>
-                    Accesible para personas con movilidad reducida
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="tv" value="true"  <%= apartment.services && apartment.services.tv ? 'checked' : '' %>>
-                    Televisión
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="kitchen" value="true"  <%= apartment.services && apartment.services.kitchen ? 'checked' : '' %>>
-                    Cocina
-                </label>
-            </div>
-        </section>
-        <section class="photos-container" style="padding-top:10px">
-            <h4>Fotografías del Apartamento (máximo 4)</h4>
-            <div>
-                <legend class="pico-color-azure-500">Fotografía principal</legend>
-                <label class="label" for="mainPhoto">URL</label>
-                <input type="url" name="mainPhoto" id="mainPhoto"
-                required
-                value='<%= apartment.mainPhoto %>'>
-                <label for="descriptionPhoto1">Descripción</label>
-                <input type="text" name="descriptionPhoto1" id="descriptionPhoto1" maxlength="50"
-                value='<%= apartment && apartment.photos && apartment.photos[0] && apartment.photos[0].descriptionPhoto ? apartment.photos[0].descriptionPhoto : '' %>'>
-            </div>
-            <div>
-                <legend class="pico-color-azure-500">Segunda fotografía</legend>
-                <label class="label" for="photo2">URL</label>
-                <input type="url" name="photo2" id="photo2"
-                required
-                value="<%= apartment && apartment.photos && apartment.photos[1] && apartment.photos[1].url ? apartment.photos[1].url : '' %>">
-                <label for="descriptionPhoto2">Descripción</label>
-                <input type="text" name="descriptionPhoto2" id="descriptionPhoto2" maxlength="50"
-                value="<%= apartment && apartment.photos && apartment.photos[1] && apartment.photos[1].descriptionPhoto ? apartment.photos[1].descriptionPhoto : '' %>">
-                
-            </div>
-            <div>
-                <legend class="pico-color-azure-500">Tercera fotografía</legend>
-                <label class="label" for="photo3">URL</label>
-                <input type="url" name="photo3" id="photo3"
-                required
-                value="<%= apartment && apartment.photos && apartment.photos[2] && apartment.photos[2].url ? apartment.photos[2].url : '' %>">
-                <label for="descriptionPhoto3">Descripción</label>
-                <input type="text" name="descriptionPhoto3" id="descriptionPhoto3" maxlength="50"
-                value="<%= apartment && apartment.photos && apartment.photos[2] && apartment.photos[2].descriptionPhoto ? apartment.photos[2].descriptionPhoto : '' %>">
-            </div>
-            <div>
-                <legend class="pico-color-azure-500">Cuarta fotografía</legend>
-                <label class="label" for="photo4">URL</label>
-                <input type="url" name="photo4" id="photo4"
-                required
-                value="<%= apartment && apartment.photos && apartment.photos[3] && apartment.photos[3].url ? apartment.photos[3].url : '' %>">
-                <label for="descriptionPhoto4">Descripción</label>
-                <input type="text" name="descriptionPhoto4" id="descriptionPhoto4" maxlength="50"
-                value="<%= apartment && apartment.photos && apartment.photos[3] && apartment.photos[3].descriptionPhoto ? apartment.photos[3].descriptionPhoto : '' %>">
-            </div>
-        </section>
-        
-        
-        <input class="w3-button w3-block w3-black" type="submit" value="<%= apartment._id ? 'Guardar cambios' : 'Añadir apartamento' %>">
-    </form>
-</body>
-
+                <div>
+                    <label>
+                        <input type="checkbox" name="heater" value="true"  <%= apartment.services && apartment.services.heater ? 'checked' : '' %>>
+                        Calefacción
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" name="accesibility" value="true"  <%= apartment.services && apartment.services.accesibility ? 'checked' : '' %>>
+                        Accesible para personas con movilidad reducida
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" name="tv" value="true"  <%= apartment.services && apartment.services.tv ? 'checked' : '' %>>
+                        Televisión
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" name="kitchen" value="true"  <%= apartment.services && apartment.services.kitchen ? 'checked' : '' %>>
+                        Cocina
+                    </label>
+                </div>
+            </section>
+            <section class="photos-container" style="padding-top:10px">
+                <h4>Fotografías del Apartamento (máximo 4)</h4>
+                <div>
+                    <legend class="pico-color-azure-500">Fotografía principal</legend>
+                    <label class="label" for="mainPhoto">URL</label>
+                    <input type="url" name="mainPhoto" id="mainPhoto"
+                    required
+                    value='<%= apartment.mainPhoto %>'>
+                    <label for="descriptionPhoto1">Descripción</label>
+                    <input type="text" name="descriptionPhoto1" id="descriptionPhoto1" maxlength="50"
+                    value='<%= apartment && apartment.photos && apartment.photos[0] && apartment.photos[0].descriptionPhoto ? apartment.photos[0].descriptionPhoto : '' %>'>
+                </div>
+                <div>
+                    <legend class="pico-color-azure-500">Segunda fotografía</legend>
+                    <label class="label" for="photo2">URL</label>
+                    <input type="url" name="photo2" id="photo2"
+                    required
+                    value="<%= apartment && apartment.photos && apartment.photos[1] && apartment.photos[1].url ? apartment.photos[1].url : '' %>">
+                    <label for="descriptionPhoto2">Descripción</label>
+                    <input type="text" name="descriptionPhoto2" id="descriptionPhoto2" maxlength="50"
+                    value="<%= apartment && apartment.photos && apartment.photos[1] && apartment.photos[1].descriptionPhoto ? apartment.photos[1].descriptionPhoto : '' %>">
+                    
+                </div>
+                <div>
+                    <legend class="pico-color-azure-500">Tercera fotografía</legend>
+                    <label class="label" for="photo3">URL</label>
+                    <input type="url" name="photo3" id="photo3"
+                    required
+                    value="<%= apartment && apartment.photos && apartment.photos[2] && apartment.photos[2].url ? apartment.photos[2].url : '' %>">
+                    <label for="descriptionPhoto3">Descripción</label>
+                    <input type="text" name="descriptionPhoto3" id="descriptionPhoto3" maxlength="50"
+                    value="<%= apartment && apartment.photos && apartment.photos[2] && apartment.photos[2].descriptionPhoto ? apartment.photos[2].descriptionPhoto : '' %>">
+                </div>
+                <div>
+                    <legend class="pico-color-azure-500">Cuarta fotografía</legend>
+                    <label class="label" for="photo4">URL</label>
+                    <input type="url" name="photo4" id="photo4"
+                    required
+                    value="<%= apartment && apartment.photos && apartment.photos[3] && apartment.photos[3].url ? apartment.photos[3].url : '' %>">
+                    <label for="descriptionPhoto4">Descripción</label>
+                    <input type="text" name="descriptionPhoto4" id="descriptionPhoto4" maxlength="50"
+                    value="<%= apartment && apartment.photos && apartment.photos[3] && apartment.photos[3].descriptionPhoto ? apartment.photos[3].descriptionPhoto : '' %>">
+                </div>
+            </section>
+            
+            
+            <input class="w3-button w3-block w3-black" type="submit" value="<%= apartment._id ? 'Guardar cambios' : 'Añadir apartamento' %>">
+        </form>
+    </body>
 </html>

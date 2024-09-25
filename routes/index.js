@@ -14,7 +14,6 @@ router.get('/about-us', indexControllers.getAboutUs);
 // Endpoint que nos muestra la Página de Conctacto
 router.get('/contact', indexControllers.getContact);
 
-
 // Ruta dinámica para el detalle del apartamento
 router.get('/apartment/:idApartment', indexControllers.getApartmentById)
 

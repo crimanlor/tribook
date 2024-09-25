@@ -12,17 +12,14 @@ const getApartments = async (req, res) => {
 }
 
 const getAboutUs = async (req, res) => {
-
     res.render('about-us');
 }
 
 const getContact = async (req, res) => {
-
     res.render('contact');
 }
 
 const getApartmentById = async (req, res) => {
-    // 1. Vamos al modelo para obtener el apartamento por el id
     const { idApartment } = req.params;
 
     const selectedApartment = await Apartment.findById(idApartment)
@@ -51,7 +48,6 @@ const getApartmentById = async (req, res) => {
 
 const searchApartments = async (req, res) => {
     const { maxPrice, city, capacity, startDate, endDate }  = req.query
-
     const query = {};
 
     if(maxPrice){
@@ -83,23 +79,6 @@ const searchApartments = async (req, res) => {
             }
         };
     }
-
-    // Opción para construir la consulta condicionalmente de manera más compacta pero no la entiendo bien
-    // const query = {
-    //     ...(maxPrice && { price: { $lte: Number(maxPrice) } }),
-    // ...(location && { location }),
-    // ...(capacity && { capacity }),
-    // ...(startDate && endDate && {
-    //     bookings: {
-    //         $not: {
-    //             $elemMatch: {
-    //                 startDate: { $lt: new Date(endDate) },
-    //                 endDate: { $gt: new Date(startDate) }
-    //             }
-    //         }
-    //     }
-    // })
-    // };
 
     const apartments = await Apartment.find(query);
 
