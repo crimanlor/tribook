@@ -165,7 +165,7 @@ Below is an example of how the apartment data will appear once it's stored in Mo
 ## Deployment
 
 The application is deployed and can be accessed at the following URL:
-[Tribook](https://)
+[Tribook](https://tribook-nznc.onrender.com/)
 
 ### Admin Credentials
 
