@@ -102,12 +102,13 @@
                 <% } %>
             </div>
         </main>
-        <footer class="w3-row-padding" style="padding-bottom: 50px;">
+        <footer class="w3-row-padding grid" style="padding-bottom: 50px; justify-content: center;">
             <% if (isAdmin) { %>
-                <a href="/admin/apartment/<%= selectedApartment._id %>/edit/" style="border-radius: 5px; width: 100%; padding: 15px;" class="w3-btn w3-teal">Editar apartamento</a>
-            <% } else { %>
-                <a href="/apartment/<%= selectedApartment._id %>/new-booking" style="border-radius: 5px; width: 100%; padding: 15px;" class="w3-btn w3-teal">Reservar apartamento</a>
-            <% } %>
+                <a href="/admin/apartment/<%= selectedApartment._id %>/edit/" style="height: 52px; border-radius: 5px; width: 250px; padding: 15px;" class="w3-btn w3-teal">Editar apartamento</a>
+                <% } else { %>
+                    <a href="/apartment/<%= selectedApartment._id %>/new-booking" style="height: 52px; border-radius: 5px; width: 250px; padding: 15px;" class="w3-btn w3-teal">Reservar apartamento</a>
+                <% } %>
+            <a href="/" style="border-radius: 5px; width: 250px; padding: 15px; height: 52px;" class="w3-btn w3-black">Volver</a>
         </footer>
         <script>
 

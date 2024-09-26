@@ -42,23 +42,31 @@
             </section>
             <label for="rules">Normas</label>
             <textarea rows="5" name="rules" id="rules" required><%= apartment.rules %></textarea>
-            <label for="rooms" style="padding-top: 20px;">Habitaciones</label>
-            <input type="number" name="rooms" id="rooms" required min="0" value="<%= apartment.rooms %>">
-            <label for="beds">Camas</label>
-            <input type="number" name="beds" id="beds" required min="0" value="<%= apartment.beds %>">
-            <label for="bathrooms">Baños</label>
-            <input type="number" name="bathrooms" id="bathrooms" required min="0" value="<%= apartment.bathrooms %>">
-            <label for="price">Precio por noche</label>
-            <input type="number" name="price" id="price" required min="0" value="<%= apartment.price %>">
-            <label for="size">M <sup>2</sup></label>
-            <input type="number" name="size" id="size" required min="0" value="<%= apartment.size %>">
-            <label for="capacity">Capacidad</label>
-            <select name="capacity" id="capacity">
-                <option value="one-person" name="one-person-capacity" <%= apartment.capacity == "one-person" ? 'selected' : '' %>>1 persona</option>
-                <option value="two-persons" name="two-persons-capacity" <%= apartment.capacity == "two-persons" ? 'selected' : '' %>>2 personas</option>
-                <option value="three-persons" name="three-persons-capacity" <%= apartment.capacity == "three-persons" ? 'selected' : '' %>>3 personas</option>
-                <option value="four-persons" name="four-persons-capacity" <%= apartment.capacity == "four-persons" ? 'selected' : '' %>>4 personas</option>
-            </select>
+            <section class="container" style="padding-top: 10px;">
+                <div class="grid">
+                    <div>
+                        <label for="rooms">Habitaciones</label>
+                        <input style="max-width: 100px;" type="number" name="rooms" id="rooms" required min="0" value="<%= apartment.rooms %>">
+                        <label for="beds">Camas</label>
+                        <input style="max-width: 100px;" type="number" name="beds" id="beds" required min="0" value="<%= apartment.beds %>">
+                        <label for="bathrooms">Baños</label>
+                        <input style="max-width: 100px;" type="number" name="bathrooms" id="bathrooms" required min="0" value="<%= apartment.bathrooms %>">
+                    </div>
+                    <div>
+                        <label for="price">Precio por noche</label>
+                        <input style="max-width: 100px;" type="number" name="price" id="price" required min="0" value="<%= apartment.price %>">
+                        <label for="size">M <sup>2</sup></label>
+                        <input style="max-width: 100px;" type="number" name="size" id="size" required min="0" value="<%= apartment.size %>">
+                        <label for="capacity">Capacidad</label>
+                        <select style="max-width: 250px;" name="capacity" id="capacity">
+                        <option value="one-person" name="one-person-capacity" <%= apartment.capacity == "one-person" ? 'selected' : '' %>>1 persona</option>
+                        <option value="two-persons" name="two-persons-capacity" <%= apartment.capacity == "two-persons" ? 'selected' : '' %>>2 personas</option>
+                        <option value="three-persons" name="three-persons-capacity" <%= apartment.capacity == "three-persons" ? 'selected' : '' %>>3 personas</option>
+                        <option value="four-persons" name="four-persons-capacity" <%= apartment.capacity == "four-persons" ? 'selected' : '' %>>4 personas</option>
+                </select>
+                    </div>
+                </div>
+            </section>
             <section class="services-container" style="padding-top: 20px;">
                 <h4>Servicios</h4>
                 <div>
@@ -141,10 +149,12 @@
                     <input type="text" name="descriptionPhoto4" id="descriptionPhoto4" maxlength="50"
                     value="<%= apartment && apartment.photos && apartment.photos[3] && apartment.photos[3].descriptionPhoto ? apartment.photos[3].descriptionPhoto : '' %>">
                 </div>
-            </section>
-            
-            
-            <input class="w3-button w3-block w3-black" type="submit" value="<%= apartment._id ? 'Guardar cambios' : 'Añadir apartamento' %>">
+            </section> 
+            <div class="w3-row-padding grid" style="padding-bottom: 50px; justify-content: center;">
+                <input style="border-radius: 5px; width: 250px; padding: 15px; height: 52px;" class="w3-btn w3-teal" type="submit" value="<%= apartment._id ? 'Guardar cambios' : 'Añadir apartamento' %>">
+                <a href="/" style="border-radius: 5px; width: 250px; padding: 15px; height: 52px;" class="w3-btn w3-black">Volver</a>
+            </div>
+           
         </form>
     </body>
 </html>
