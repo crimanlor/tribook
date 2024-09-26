@@ -231,6 +231,6 @@ To gain access to administrative features (such as adding, editing, or deleting 
 Feel free to explore the demo versions of the application. You can see how to add, edit, and delete apartments without needing admin access. If you have any questions or need assistance, don’t hesitate to reach out!
 
 - [Demo Admin features: Add, Edit and Delete Apartment](https://drive.google.com/file/d/1hq71uDphRP2AxkYsPbybmTFCsQwiJFGw/view?usp=sharing)
-- [Demo Regular User features: View Apartments List, Filter and Made a Booking](./public/demos/Demo funcionalidades usuario.mp4)
+- [Demo Regular User features: View Apartments List, Filter and Made a Booking](https://drive.google.com/file/d/12jH3pyqtiuwNAUK12mdLD_w_tvG1Ollz/view?usp=sharing)
 
 ---
