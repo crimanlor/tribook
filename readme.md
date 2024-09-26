@@ -105,74 +105,64 @@ This section provides an insight into the architecture of the project, focusing 
 
 The application utilizes **Mongoose** to define the data structure and interactions with MongoDB. Apartment model represents a collection in the database:
 
-#### Apartment Data Structure Example
+- **Title**: `string` The title of the property. (Required)
 
-Below is an example of how the apartment data will appear once it's stored in MongoDB:
+- **Location**: `object` Contains the location details:
 
-```json
-{
-  "_id": "66ed3cc2190d4fb066632cd0",
-  "title": "Penthouse with Sea View",
-  "location": {
-    "city": "Valencia",
-    "province": "Valencia",
-    "coordinates": {
-      "latitude": 39.47,
-      "longitude": 0.38
-    }
-  },
-  "description": "Enjoy this luxurious penthouse with stunning sea views in the heart of Valencia. Perfect for families or travelers seeking comfort and elegance.",
-  "rules": "No parties or events allowed. Respect the neighbors and no smoking indoors.",
-  "rooms": 3,
-  "beds": 4,
-  "bathrooms": 2,
-  "price": 180,
-  "size": 85,
-  "photos": [
-    {
-      "url": "https://images.pexels.com/photos/2347356/pexels-photo-2347356.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "descriptionPhoto": "Spacious living room with sea view"
-    },
-    {
-      "url": "https://images.pexels.com/photos/2347356/pexels-photo-2347356.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "descriptionPhoto": "Master bedroom with king-size bed and balcony access"
-    },
-    {
-      "url": "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "descriptionPhoto": "Fully equipped modern kitchen"
-    },
-    {
-      "url": "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "descriptionPhoto": "Bathroom with luxury finishes and sea view"
-    }
-  ],
-  "mainPhoto": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "capacity": "two-persons",
-  "services": {
-    "wifi": true,
-    "airConditioner": true,
-    "heater": true,
-    "accesibility": false,
-    "tv": true,
-    "kitchen": true
-  },
-  "bookings": [
-    {
-      "startDate": {
-        "$date": "2024-11-04T00:00:00Z"
-      },
-      "endDate": {
-        "$date": "2024-11-05T00:00:00Z"
-      },
-      "_id": {
-        "$oid": "66df33d8512ae4a990092e6e"
-      }
-    }
-  ],
-  "isAvailable": true,
-  "__v": 0
-}
-```
+  - **City**: `string` (Required) The city where the property is located.
+  - **Province**: `string` The province where the property is located.
+  - **Coordinates**: `object` Contains geographic coordinates:
+    - **Latitude**: `number` The latitude of the property.
+    - **Longitude**: `number` The longitude of the property.
+
+- **Description**: `string` A detailed description of the property and its features. (Required)
+
+- **Rules**: `string` House rules (e.g., no parties, no smoking). (Required)
+
+- **Number of Rooms**: `number` The total number of rooms available. (Required)
+
+- **Number of Beds**: `number` The total number of beds in the property. (Required)
+
+- **Number of Bathrooms**: `number` The total number of bathrooms in the property. (Required)
+
+- **Price**: `number` Price per night in the local currency. (Required)
+
+- **Size**: `number`Total area of the property in square meters. (Required, minimum value: 0)
+
+- **Photos**: `array of objects` A list of additional images with descriptions. Each object includes:
+
+  - **url**: `string` (Required) Link to the image.
+  - **descriptionPhoto**: `string` Brief description of the image (max length: 50 characters, default: "").  
+    **Note**: A maximum of 4 photos is allowed.
+
+- **Main Photo**: `string`  
+  The main image of the property. (Required)  
+  Must match a valid URL format: `^(https):\/\/[^\s/$.?#].[^\s]*$`.
+
+- **Capacity**: `string`  
+  Maximum capacity of guests, with allowed values:
+
+  - "one-person"
+  - "two-persons"
+  - "three-persons"
+  - "four-persons"
+
+- **Bookings**: `array of objects` List of bookings, where each object includes:
+
+  - **startDate**: `date` The start date of the booking.
+  - **endDate**: `date` The end date of the booking.
+
+- **Services Available**: `object`  
+  Available services, where each attribute is a `boolean` with `default in false`:
+
+  - **wifi**
+  - **airConditioner**
+  - **heater**
+  - **accessibility**
+  - **tv**
+  - **kitchen**
+
+- **Is Available**: `boolean` Indicates if the property is currently available. (Required, default: true)
 
 ### Controllers
 
