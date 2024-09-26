@@ -92,6 +92,8 @@ The project involves creating a tourist accommodation search and booking applica
 - `w3.css`: For responsive design and layout.
 - `body-parser`: To handle form submissions.
 - `dotenv`: For environment variable management.
+- `connect-flash`: For setting and displaying temporary notifications to the user.
+- `nodemon`: To restart the server when file changes are detected, improving the development workflow.
 
 ## Example Usage
 
