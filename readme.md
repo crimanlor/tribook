@@ -107,11 +107,11 @@ The application utilizes **Mongoose** to define the data structure and interacti
 
 - **Title**: `string`
 - **Location**: `object` Contains the location details:
-  **City**: `string`
-  **Province**: `string`
-  **Coordinates**: `object`
-  **Latitude**: `number`
-  **Longitude**: `number`
+  - city: `string`
+  - province: `string`
+  - coordinates: `object`
+    - latitude: `number`
+    - longitude: `number`
 - **Description**: `string`
 - **Rules**: `string`
 - **Number of Rooms**: `number`
@@ -119,10 +119,9 @@ The application utilizes **Mongoose** to define the data structure and interacti
 - **Number of Bathrooms**: `number`
 - **Price**: `number` Price per night in the local currency.
 - **Size**: `number`Total area of the property in square meters.
-- **Photos**: `array of objects` A list of additional images with descriptions. Each object includes:
-  **url**: `string`
-  **descriptionPhoto**: `string`
-  **Note**: A maximum of 4 photos is allowed.
+- **Photos**: `array of objects` A maximum of 4 photos is allowed. Each object includes:
+  - url: `string`
+  - description: `string`
 - **Main Photo**: `string` Must match a valid URL format: `^(https):\/\/[^\s/$.?#].[^\s]*$`.
 - **Capacity**: `string` with allowed values:
   - "one-person"
@@ -130,15 +129,15 @@ The application utilizes **Mongoose** to define the data structure and interacti
   - "three-persons"
   - "four-persons"
 - **Bookings**: `array of objects` includes:
-  **startDate**: `date` The start date of the booking.
-  **endDate**: `date` The end date of the booking.
+  - startDate: `date`
+  - endDate: `date`
 - **Services Available**: `object` Available services, where each attribute is a `boolean` with `default in false`:
-  **wifi**
-  **airConditioner**
-  **heater**
-  **accessibility**
-  **tv**
-  **kitchen**
+  - wifi
+  - airConditioner
+  - heater
+  - accessibility
+  - tv
+  - kitchen
 - **Is Available**: `boolean` Indicates if the property is currently available.
 
 ### Controllers
