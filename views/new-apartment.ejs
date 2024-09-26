@@ -150,11 +150,10 @@
                     value="<%= apartment && apartment.photos && apartment.photos[3] && apartment.photos[3].descriptionPhoto ? apartment.photos[3].descriptionPhoto : '' %>">
                 </div>
             </section> 
-            <div class="w3-row-padding grid" style="padding-bottom: 50px; justify-content: center;">
+            <div class="w3-row-padding grid" style="width: 100%; padding-bottom: 50px; justify-content: center;">
                 <input style="border-radius: 5px; width: 250px; padding: 15px; height: 52px;" class="w3-btn w3-teal" type="submit" value="<%= apartment._id ? 'Guardar cambios' : 'Añadir apartamento' %>">
                 <a href="/" style="border-radius: 5px; width: 250px; padding: 15px; height: 52px;" class="w3-btn w3-black">Volver</a>
             </div>
-           
         </form>
     </body>
 </html>
