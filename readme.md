@@ -120,23 +120,26 @@ The controllers handle the business logic of the application. Key controllers in
 The application uses **Express Router** to define the endpoints for the application. Key routes include:
 
 **Admin**
-`GET /apartment/:idApartment/edit`
-`GET /apartment/new-apartment`
-`POST /apartment/new-apartment`
+
+- `GET /apartment/:idApartment/edit`
+- `GET /apartment/new-apartment`
+- `POST /apartment/new-apartment`
 
 **Auth**
-`GET /login`
-`GET /logout`
-`POST /login`
+
+- `GET /login`
+- `GET /logout`
+- `POST /login`
 
 **Index**
-`GET /`
-`GET /apartment/:idApartment`
-`GET /search`
-`GET /apartment/:idApartment/new-booking`
-`GET /about-us`
-`GET /contact`
-`POST /apartment/new-booking`
+
+- `GET /`
+- `GET /apartment/:idApartment`
+- `GET /search`
+- `GET /apartment/:idApartment/new-booking`
+- `GET /about-us`
+- `GET /contact`
+- `POST /apartment/new-booking`
 
 ### Views
 
