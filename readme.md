@@ -105,64 +105,41 @@ This section provides an insight into the architecture of the project, focusing 
 
 The application utilizes **Mongoose** to define the data structure and interactions with MongoDB. Apartment model represents a collection in the database:
 
-- **Title**: `string` The title of the property. (Required)
-
+- **Title**: `string`
 - **Location**: `object` Contains the location details:
-
-  - **City**: `string` (Required) The city where the property is located.
-  - **Province**: `string` The province where the property is located.
-  - **Coordinates**: `object` Contains geographic coordinates:
-    - **Latitude**: `number` The latitude of the property.
-    - **Longitude**: `number` The longitude of the property.
-
-- **Description**: `string` A detailed description of the property and its features. (Required)
-
-- **Rules**: `string` House rules (e.g., no parties, no smoking). (Required)
-
-- **Number of Rooms**: `number` The total number of rooms available. (Required)
-
-- **Number of Beds**: `number` The total number of beds in the property. (Required)
-
-- **Number of Bathrooms**: `number` The total number of bathrooms in the property. (Required)
-
-- **Price**: `number` Price per night in the local currency. (Required)
-
-- **Size**: `number`Total area of the property in square meters. (Required, minimum value: 0)
-
+  **City**: `string`
+  **Province**: `string`
+  **Coordinates**: `object`
+  **Latitude**: `number`
+  **Longitude**: `number`
+- **Description**: `string`
+- **Rules**: `string`
+- **Number of Rooms**: `number`
+- **Number of Beds**: `number`
+- **Number of Bathrooms**: `number`
+- **Price**: `number` Price per night in the local currency.
+- **Size**: `number`Total area of the property in square meters.
 - **Photos**: `array of objects` A list of additional images with descriptions. Each object includes:
-
-  - **url**: `string` (Required) Link to the image.
-  - **descriptionPhoto**: `string` Brief description of the image (max length: 50 characters, default: "").  
-    **Note**: A maximum of 4 photos is allowed.
-
-- **Main Photo**: `string`  
-  The main image of the property. (Required)  
-  Must match a valid URL format: `^(https):\/\/[^\s/$.?#].[^\s]*$`.
-
-- **Capacity**: `string`  
-  Maximum capacity of guests, with allowed values:
-
+  **url**: `string`
+  **descriptionPhoto**: `string`
+  **Note**: A maximum of 4 photos is allowed.
+- **Main Photo**: `string` Must match a valid URL format: `^(https):\/\/[^\s/$.?#].[^\s]*$`.
+- **Capacity**: `string` with allowed values:
   - "one-person"
   - "two-persons"
   - "three-persons"
   - "four-persons"
-
-- **Bookings**: `array of objects` List of bookings, where each object includes:
-
-  - **startDate**: `date` The start date of the booking.
-  - **endDate**: `date` The end date of the booking.
-
-- **Services Available**: `object`  
-  Available services, where each attribute is a `boolean` with `default in false`:
-
-  - **wifi**
-  - **airConditioner**
-  - **heater**
-  - **accessibility**
-  - **tv**
-  - **kitchen**
-
-- **Is Available**: `boolean` Indicates if the property is currently available. (Required, default: true)
+- **Bookings**: `array of objects` includes:
+  **startDate**: `date` The start date of the booking.
+  **endDate**: `date` The end date of the booking.
+- **Services Available**: `object` Available services, where each attribute is a `boolean` with `default in false`:
+  **wifi**
+  **airConditioner**
+  **heater**
+  **accessibility**
+  **tv**
+  **kitchen**
+- **Is Available**: `boolean` Indicates if the property is currently available.
 
 ### Controllers
 
