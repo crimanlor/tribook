@@ -5,13 +5,6 @@ const USERNAME = process.env.DB_USER;
 const PASSWORD = process.env.DB_PASSWORD;
 
 const getLoginForm = (req, res) => {
-    // res.send(`
-    //     <form method="POST" action="/login">
-    //         <input type="text" name="username" placeholder="Usuario" required />
-    //         <input type="password" name="password" placeholder="Contraseña" required />
-    //         <button type="submit">Iniciar sesión</button>
-    //     </form>
-    // `)
     res.render('auth')
 }
 

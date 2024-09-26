@@ -88,14 +88,24 @@ The project involves creating a tourist accommodation search and booking applica
 ## Dependencies
 
 - `express`: To create the server and handle routes.
+- `express-session`: For managing user sessions in Express app.
+- `ejs`: To generate dynamic HTML pages on the server side.
+- `morgan`: To log requests.
 - `mongoose`: To interact with MongoDB for data storage.
 - `w3.css`: For responsive design and layout.
-- `body-parser`: To handle form submissions.
 - `dotenv`: For environment variable management.
 - `connect-flash`: For setting and displaying temporary notifications to the user.
 - `nodemon`: To restart the server when file changes are detected, improving the development workflow.
 
-## Example Usage
+## Technical Overview
+
+This section provides an insight into the architecture of the project, focusing on the models, controllers, routes, and views used in the application.
+
+### Models
+
+The application utilizes **Mongoose** to define the data structure and interactions with MongoDB. Apartment model represents a collection in the database:
+
+#### Apartment Data Structure Example
 
 Below is an example of how the apartment data will appear once it's stored in MongoDB:
 
@@ -164,6 +174,49 @@ Below is an example of how the apartment data will appear once it's stored in Mo
 }
 ```
 
+### Controllers
+
+The controllers handle the business logic of the application. Key controllers include:
+
+- **Admin**: Manages the CRUD operations for apartments, including creating, updating, and deleting listings.
+- **Auth**: Handles user authentication and authorization, managing user sessions.
+- **Index**: Renders the homepage, where it lists available apartments. It also handles filtering apartments based on user input and manages the reservation form.
+
+### Routes
+
+The application uses **Express Router** to define the endpoints for the application. Key routes include:
+
+- **Admin**
+- `GET /apartment/:idApartment/edit`
+- `GET /apartment/new-apartment`
+- `POST /apartment/new-apartment`
+
+- **Auth**
+- `GET /login`
+- `GET /logout`
+- `POST /login`
+
+- **Index**
+- `GET /`
+- `GET /apartment/:idApartment`
+- `GET /search`
+- `GET /apartment/:idApartment/new-booking`
+- `GET /about-us`
+- `GET /contact`
+- `POST /apartment/new-booking`
+
+### Views
+
+The views are rendered using **EJS**, allowing dynamic content generation. The main views include:
+
+- **Home**
+- **Apartment Details**
+- **Login**
+- **New Apartment**
+- **New Booking**
+- **Contact**
+- **About us**
+
 ## Deployment
 
 The application is deployed and can be accessed at the following URL:
@@ -177,7 +230,7 @@ To gain access to administrative features (such as adding, editing, or deleting 
 
 Feel free to explore the demo versions of the application. You can see how to add, edit, and delete apartments without needing admin access. If you have any questions or need assistance, don’t hesitate to reach out!
 
-- [Demo Admin features: Add, Edit and Delete Apartment](link-to-demo)
-- [Demo Regular User features: View Apartments List, Filter and Made a Booking](link-to-demo)
+- [Demo Admin features: Add, Edit and Delete Apartment](https://drive.google.com/file/d/1hq71uDphRP2AxkYsPbybmTFCsQwiJFGw/view?usp=sharing)
+- [Demo Regular User features: View Apartments List, Filter and Made a Booking](./public/demos/Demo funcionalidades usuario.mp4)
 
 ---
