@@ -105,40 +105,7 @@ This section provides an insight into the architecture of the project, focusing 
 
 The application utilizes **Mongoose** to define the data structure and interactions with MongoDB. Apartment model represents a collection in the database:
 
-- **Title**: `string`
-- **Location**: `object` Contains the location details:
-  - city: `string`
-  - province: `string`
-  - coordinates: `object`
-    - latitude: `number`
-    - longitude: `number`
-- **Description**: `string`
-- **Rules**: `string`
-- **Number of Rooms**: `number`
-- **Number of Beds**: `number`
-- **Number of Bathrooms**: `number`
-- **Price**: `number` Price per night in the local currency.
-- **Size**: `number`Total area of the property in square meters.
-- **Photos**: `array of objects` A maximum of 4 photos is allowed. Each object includes:
-  - url: `string`
-  - description: `string`
-- **Main Photo**: `string` Must match a valid URL format: `^(https):\/\/[^\s/$.?#].[^\s]*$`.
-- **Capacity**: `string` with allowed values:
-  - "one-person"
-  - "two-persons"
-  - "three-persons"
-  - "four-persons"
-- **Bookings**: `array of objects` includes:
-  - startDate: `date`
-  - endDate: `date`
-- **Services Available**: `object` Available services, where each attribute is a `boolean` with `default in false`:
-  - wifi
-  - airConditioner
-  - heater
-  - accessibility
-  - tv
-  - kitchen
-- **Is Available**: `boolean` Indicates if the property is currently available.
+![UML_Aparment](./public/images/uml-apartment-model.png)
 
 ### Controllers
 
